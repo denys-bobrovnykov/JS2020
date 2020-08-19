@@ -37,15 +37,15 @@ alert('Your amount of USD equals ' + (usd * exchangeRate) + ' in EUR.');
 
 const fileSize = 0.82;
 let driveSize = +prompt('Enter your flash drive size in gygabites.');
-let result = (driveSize / fileSize).toFixed(1);
-alert('Amount of files could be stored: ' + result.slice(0, result.length - 2));
+let result = parseInt(driveSize / fileSize);
+alert('Amount of files could be stored: ' + result);
 
 //Task 8
 
 let sum = +prompt('Enter your money amount.');
 let price = +prompt('Enter one candy pice.');
-let count = (sum / price).toFixed(1).slice(0, (sum / price).toFixed(1).length - 2);
-alert('You bought ' + count + ' candies, and your change is ' + (sum % price) + '.');
+let count = parseInt(sum / price);
+alert('You bought ' + count + ' candies, and your change is ' + (sum % price).toFixed(2) + '.');
 
 //Task 9
 
