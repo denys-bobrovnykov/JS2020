@@ -12,7 +12,7 @@ alert('You are ' + (2020 - year) + ' years old.');
 //Task 3
 
 let sideLength = +prompt('Enter square side length.');
-let squareArea = sideLength * 4;
+let squareArea = sideLength * sideLength;
 alert('Square area is: ' + squareArea);
 
 //Task 4
