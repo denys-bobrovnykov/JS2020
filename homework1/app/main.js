@@ -51,7 +51,6 @@ alert('You bought ' + ((sum - change) / price) + ' candies, and your change is '
 
 let number = prompt('Enter three digit number.');
 // One liner using string methods
-
 // let output = number.split("").reverse().join("");
 
 const lastNum = number % 10;
