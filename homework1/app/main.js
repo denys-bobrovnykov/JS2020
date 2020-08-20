@@ -49,11 +49,7 @@ alert('You bought ' + count + ' candies, and your change is ' + (sum % price).to
 
 //Task 9
 
-let number = +prompt('Enter three digit number.');
-let output = '';
-let x = 10;
-for (let i = String(number).length; i > 0; i--){
-    output = output + String(number % x)[0];
-    x = x * 10;
-}
+let number = prompt('Enter three digit number.');
+let output = number.split("").reverse().join("");
+
 alert('Inverted result: ' + output);
