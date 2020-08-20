@@ -35,21 +35,26 @@ alert('Your amount of USD equals ' + (usd * exchangeRate) + ' in EUR.');
 
 //Task 7
 
-const fileSize = 0.82;
-let driveSize = +prompt('Enter your flash drive size in gygabites.');
-let result = parseInt(driveSize / fileSize);
+const fileSize = 820;
+let driveSize = +prompt('Enter your flash drive size in gygabites.') * 1000;
+let result = (driveSize -(driveSize % fileSize)) / fileSize;
 alert('Amount of files could be stored: ' + result);
 
 //Task 8
 
-let sum = +prompt('Enter your money amount.');
-let price = +prompt('Enter one candy pice.');
-let count = parseInt(sum / price);
-alert('You bought ' + count + ' candies, and your change is ' + (sum % price).toFixed(2) + '.');
+const sum = +prompt('Enter your money amount.');
+const price = +prompt('Enter one candy pice.');
+const change = sum % price;
+alert('You bought ' + ((sum - change) / price) + ' candies, and your change is ' + change + '.');
 
 //Task 9
 
 let number = prompt('Enter three digit number.');
-let output = number.split("").reverse().join("");
+// One liner using string methods
 
-alert('Inverted result: ' + output);
+// let output = number.split("").reverse().join("");
+
+const lastNum = number % 10;
+const secondNum = ((number - lastNum) / 10) % 10;
+const firstNum = ((((number - lastNum) / 10) - secondNum) / 10) % 10;
+alert(`Inverted result: ${lastNum}${secondNum}${firstNum}`);
