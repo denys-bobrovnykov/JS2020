@@ -7,13 +7,11 @@ function taskOne(){
     }
     const paintCan = 16;
     alert('TASK 1');
-    alert('We have an office and need to calculate a number of paint cans required to paint all walls.');
+    alert('We have an office and need to calculate a number of paint cans required to paint all 4 =) walls.');
     dimentions.length = +getInput('length');
-    console.log(dimentions.length);
     dimentions.width = +getInput('width');
     dimentions.height = +getInput('height');
-    const officeArea = (dimentions.length + dimentions.width) * 2 * dimentions.height;
-    console.log(officeArea);
+    const officeArea = ((dimentions.length + dimentions.width) * 2) * dimentions.height;
     const cansRequired = (officeArea % paintCan) ? ((officeArea - (officeArea % paintCan)) / paintCan + 1) : officeArea / paintCan;
     alert(cansRequired);
 
@@ -34,6 +32,8 @@ function taskOne(){
         return userInput;   
     }
 }   // End Functions
+// Qs:
+//    - How to work with cancel prompt action?
 // --------------------------------
 
 // --------- Task 2 ---------------
