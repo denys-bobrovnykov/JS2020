@@ -129,6 +129,7 @@ function taskThree(){
 
 // --------- Task 4 ---------------
 
+
 // Minitask 1:
 
 // Запросить у пользователя его возраст и определить, кем он является: 
@@ -163,6 +164,7 @@ function age(){
             alert('Your age is off limits for me.');
     }    
 }
+
 
 //Minitask 2:
 
@@ -246,6 +248,7 @@ function numCheck(){
         alert('Sorry, wrong input.');
     }
 }
+
 
 // Minitask 4
 
