@@ -307,7 +307,7 @@ function exchange(){
     const usdCheck = !isNaN(usd) && usd > 0;
     if(usdCheck){
         const request = prompt('Choose currency EUR, UAH or GBP').toUpperCase();
-        exchangeRates[request] && usdCheck ? alert(`${usd * exchangeRates[request]} ${request}`) : alert('No such currency in database.');
+        exchangeRates[request] ? alert(`${usd * exchangeRates[request]} ${request}`) : alert('No such currency in database.');
     }else{
         alert('Enter valid number of USD.');
     }
