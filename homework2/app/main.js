@@ -173,7 +173,7 @@ function age(){
 
 function symbol(){
     const key = prompt('Press one number key from 0 to 9.');
-    switch(+key){
+    switch(+key !== null){
         case 0: {
             alert(`${key} - )`);
             break;
@@ -296,4 +296,22 @@ function palindrome(){
 // Пользователь вводит количество USD, 
 // выбирает, в какую валюту хочет перевести: EUR, UAH или GBP,
 //  и получает в ответ соответствующую сумму.
+
+function exchange(){
+    const exchangeRates = {
+        EUR: 0.85,
+        UAH: 27.59,
+        GBP: 0.76
+    }
+    const usd = +prompt('Enter sum of USD.');
+    const usdCheck = !isNaN(usd) && usd > 0;
+    if(usdCheck){
+        const request = prompt('Choose currency EUR, UAH or GBP').toUpperCase();
+        exchangeRates[request] && usdCheck ? alert(`${usd * exchangeRates[request]} ${request}`) : alert('No such currency in database.');
+    }else{
+        alert('Enter valid number of USD.');
+    }
+}
+
+
 
