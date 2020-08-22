@@ -1,4 +1,6 @@
 'use strict';
+
+
 // --------- Task 1 --------------
 function taskOne(){
     const dimensions = {
@@ -15,6 +17,7 @@ function taskOne(){
     const officeArea = ((dimensions.length + dimensions.width) * 2) * dimensions.height;
     const cansRequired = (officeArea % paintCan) ? ((officeArea - (officeArea % paintCan)) / paintCan + 1) : (officeArea / paintCan);
     alert(`Cans required: ${cansRequired}.`);
+
 
     // Functions for Task 1
     function getInput(mesure){      // Takes a string for text prompt
@@ -39,10 +42,11 @@ function taskOne(){
 //    - How to work with cancel prompt action?
 // --------------------------------
 
+
 // --------- Task 2 ---------------
 function taskTwo(){
     alert('TASK 2.');
-    alert('GOLD RUSH!');
+    alert('GOLD SAND!');
     let prices = [];
     let buckets = [];
     let result = 0;
@@ -63,6 +67,7 @@ function taskTwo(){
     alert(`Prices|${prices}| to Buckets|${buckets}|`);
     alert(`Your max gold value is ${parseInt(result)} rubles.`);
     
+
     // Functions for Task 2
     function getInput(mesure){    // Takes a string for text prompt
         mesure = String(mesure).toUpperCase();
@@ -85,3 +90,39 @@ function taskTwo(){
 }
 // --------------------------------
 
+
+// --------- Task 3 ---------------
+function taskThree(){
+    const ticketNum = +getInput("ticket number");
+    const numStr = String(ticketNum);
+    if (numStr.length == 6 && ((+numStr[0] + +numStr[1] + +numStr[2]) == (+numStr[3] + +numStr[4] + +numStr[5]))) {
+        alert('You are lucky!!!');
+    }else{
+        alert('Sorry, the ticket is not lucky.');
+    }
+    
+
+    // Functions for Task 3
+    function getInput(mesure){    // Takes a string for text prompt
+        mesure = String(mesure).toUpperCase();
+        const maxValue = 10 ** 6 - 1;
+        const text = `Please enter ${mesure} (Format: number not more than ${maxValue}).`
+        let check = false;
+        let userInput = '';
+        do{
+            userInput = prompt(text);
+            check = !isNaN(+userInput) && +userInput <= maxValue && +userInput > 0 && userInput !== null;
+            if(!check && userInput !== null){
+                alert(`Try again. Remember, only positive number not more than ${maxValue}!`);
+            }else if(userInput === null){
+                alert('Sorry, you can not cancel until you enter a valid value.');
+            }
+        }while(!check); 
+        return userInput;   
+    }
+    // End Functions
+}
+// --------------------------------
+
+
+// --------- Task 4 ---------------
