@@ -364,3 +364,40 @@ function questions(){
 //  и вывести следующую за ней дату. 
 //  Учтите возможность перехода на 
 //  следующий месяц, год, а также високосный год
+
+function nextDate(){
+    const months = {
+        1: 31,
+        2: 29,
+        3: 31,
+        4: 30,
+        5: 31,
+        6: 30,
+        7: 31,
+        8: 31,
+        9: 30,
+        10: 31,
+        11: 30,
+        12: 31
+    }
+    const day = prompt('Enter day');
+    const month = prompt('Enter month.');
+    const year = prompt('Enter year.');
+    const isLeap = !(year % 100 && year % 400) || !(year % 4) ? true : false;
+    let nextDay = +day + 1;
+    let nextMonth =+month + 1;
+    let nextYear = +year;
+    
+    if(nextDay > months[month] && isLeap){
+        nextDay = 1;
+        if(nextMonth > 12){
+            nextMonth = 1;
+            nextYear++;
+        }
+    }else if(!isLeap && month == 2){
+        nextDay = 1;
+    }else{
+        nextMonth = +month;
+    }
+    alert(`Next date is: ${nextDay}/${nextMonth}/${nextYear}`)
+}
