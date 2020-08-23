@@ -267,4 +267,100 @@ function exchange(){
 }
 
 
+// Minitask 7
 
+// Запросить у пользователя сумму покупки
+//  и вывести сумму к оплате со скидкой: 
+//  от 200 до 300 – скидка будет 3%, 
+//  от 300 до 500 – 5%, 
+//  от 500 и выше – 7%.
+
+function discount(){
+    const cost = +prompt('Enter total cost of all items.');
+    const checkNum = !isNaN(cost) && cost > 0;
+    let discount = 0;
+    let text = '';
+    if(checkNum){
+        if(cost >= 200 && cost < 300) {
+            discount = 3;
+            text = `, with discount ${discount}%.`
+        }else if(cost >= 300 && cost < 500){
+            discount = 5;
+            text = `, with discount ${discount}%.`
+        }else if(cost >= 500){
+            discount = 7;
+            text = `, with discount ${discount}%.`
+        } else {
+            text = ', with no discount.';
+        }
+        alert(`Final price for all items: ${cost - cost * (discount / 100)}` + text);
+    }
+}
+
+
+// Minitask 8
+
+// Запросить у пользователя длину окружности и периметр квадрата. 
+// Определить, может ли такая окружность поместиться в указанный квадрат.
+
+function fittingCircle(){
+    const squarePerimeter = +prompt('Enter square perimeter.');
+    const circleLength = +prompt('Enter circle length.');
+    (squarePerimeter / 4 >= circleLength / Math.PI) ? alert('Fits') : alert('Doesnt fit.');
+}
+
+
+// Minitask 9
+
+// Задать пользователю 3 вопроса,
+//  в каждом вопросе по 3 варианта ответа. 
+//  За  каждый правильный ответ начисляется 2 балла. 
+//  После вопросов выведите пользователю количество набранных баллов.
+
+function questions(){
+    const questions = {
+        'What is an age of the oldest living peson?': {'cor': 117, 'opt1': 118, 'opt2': 105},
+        '3+3': {'opt1': 8, 'cor': 6, 'opt2': 4},
+        '4+4': {'opt1': 6, 'opt2': 4, 'cor': 8}
+    }
+    let answers = [];
+    const wrongAnswers = {
+        hasWrong: null
+    };
+    let score = 0;
+    for (let key in questions) {
+        answers = Object.values(questions[key]);
+        let userInput = +prompt(`${key} 
+                                1) ${answers[0]} 
+                                2) ${answers[1]}
+                                3) ${answers[2]}`
+                                );
+        // Using if, because have multiple statements
+        if(answers[userInput - 1] == questions[key].cor) {
+            score += 2;
+        }else{
+            wrongAnswers[key] = answers[userInput - 1];
+            wrongAnswers.hasWrong = 'yes';
+        } 
+    }
+    alert(`Your score is ${score}.`);
+    if(wrongAnswers.hasWrong){
+        for(let key in wrongAnswers){
+            if(!(key == 'hasWrong')){
+                alert(`Question: "${key}" 
+                Your answer is ${wrongAnswers[key]}.
+                Correct answer is: ${questions[key].cor}.`);
+            }else{
+                alert('You have wrong answers.');
+            }
+        }
+    }
+}
+
+
+// Minitask 10
+
+// Запросить дату (день, месяц, год)
+//  и вывести следующую за ней дату. 
+//  Учтите возможность перехода на 
+//  следующий месяц, год, а также високосный год
