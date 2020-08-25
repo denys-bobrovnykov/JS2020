@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 2</title>
     <script src="./app/main.js"></script>
+    <style>
+        header {
+            width: 100%;
+            position: fixed;
+            background-color: lightblue;
+            z-index: 100;
+            top: 0px;
+        }
+        header h1, footer {
+            text-align: center;
+        }
+        footer {
+            position: fixed;
+            width: 100%;
+            padding-bottom: 20px;
+            bottom: 0px;
+            background-color: lightblue;
+        }
+        main {
+            top: 80px;
+            position: relative;
+            padding-bottom: 22px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -33,6 +57,8 @@
             </ol> 
         </section>      
     </main>
-    <footer>"JS Fundamentals" by <a href="https://www.softserveinc.com/en-us">Softserveinc</a> summer 2020.</footer>
+    <footer>
+        <small>"JS Fundamentals" by <a href="https://www.softserveinc.com/en-us">Softserveinc</a> summer 2020.</small>
+    </footer>
 </body>
 </html>

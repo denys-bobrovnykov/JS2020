@@ -25,30 +25,38 @@ function taskOne(){
 
 // --------- Task 2 ---------------
 function taskTwo(){
+    // Task intro
     alert('TASK 2.');
     alert('GOLD SAND!');
+    // Vars initialization
     let prices = [];
     let buckets = [];
     let result = 0;
-    // Get all inputs in lists
-    prices.push(+getInput('Enter Gold A1 price(max 100 RUB).', 100));
-    prices.push(+getInput('Enter Gold A2 price(max 100 RUB).', 100));
-    prices.push(+getInput('Enter Gold A3 price(max 100 RUB).', 100));
-    buckets.push(+getInput('Enter Bucket B1 max volume in kg(max 100 kg).', 100));
-    buckets.push(+getInput('Enter Bucket B2 max volume in kg(max 100 kg).', 100));
-    buckets.push(+getInput('Enter Bucket B3 max volume in kg(max 100 kg).', 100));
-    // Sort all lists(by number descending) https://www.javascripttutorial.net/javascript-array-sort/
-    prices.sort((a,b) => b - a);
-    buckets.sort((a,b) => b - a);
-    // Put the most expensive gold in the biggest bucket...
-    for (let i = 0; i < prices.length; i++){
-        result += prices[i] * buckets[i];
+    // Get all inputs as Obj in prices
+    for(let i = 0; i < 3; i++){
+        prices.push({'name':`A${i + 1}`, 'value': +getInput(`Enter Gold A${i + 1} price(max 100 RUB).`, 100)});
     }
-    alert(`Prices|${prices}| to Buckets|${buckets}|`);
+    // Prices sort 
+    prices.sort((a, b) => a.value - b.value)
+    // Get all inputs as Obj in buckets
+    for(let i = 0; i < 3; i++){
+        buckets.push({'name': `B${i + 1}`,  'value': +getInput(`Enter Bucket B${i + 1} max volume in kg(max 100 kg).`, 100)});
+    }
+    // Buckets sort
+    buckets.sort((a, b) => a.value - b.value)
+    // Put the most expensive gold in the biggest bucket and so on...
+    for (let i = 0; i < 3; i++){
+        result += prices[i].value * buckets[i].value;
+    }
+    // Display result
+    alert(`
+    Sand ${prices[2].name} with price ${prices[2].value} RUB to Bucket ${buckets[2].name} ${buckets[2].value} KG\n
+    Sand ${prices[1].name} with price ${prices[1].value} RUB to Bucket ${buckets[1].name} ${buckets[1].value} KG\n
+    Sand ${prices[0].name} with price ${prices[0].value} RUB to Bucket ${buckets[0].name} ${buckets[0].value} KG\n
+    `);
     alert(`Your max gold value is ${parseInt(result)} rubles.`);
 }
 // Qs:
-//     - How to sort Object data?
 // --------------------------------
 
 
