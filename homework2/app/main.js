@@ -1,21 +1,27 @@
 'use strict';
-
+/* Info:
+Common function getInput() is in the end of Task 3.
+*/
 
 // --------- Task 1 --------------
 function taskOne(){
+    // Intro
+    alert('TASK 1');
+    alert('We have an office and need to calculate a number of paint cans required to paint all 4 =) walls.');
+    // Var initialization
     const office = {
         length : 0,
         width : 0,
         height: 0
     }
     const paintCan = 16;
-    alert('TASK 1');
-    alert('We have an office and need to calculate a number of paint cans required to paint all 4 =) walls.');
-    office.length = +getInput('Please enter office LENGTH in meters(Format: number not more than 1000).', 1000);
-    office.width = +getInput('Please enter office WIDTH in meters(Format: number not more than 1000).', 1000);
-    office.height = +getInput('Please enter office HEIGHT in meters(Format: number not more than 1000).', 1000);
+    // Getting input
+    for(let key in office){
+        office[key] = +getInput(`Please enter office's ${key} in meters(Format: number not more than 1000).`, 1000);
+    }
     const officeArea = ((office.length + office.width) * 2) * office.height;
     const cansRequired = (officeArea % paintCan) ? ((officeArea - (officeArea % paintCan)) / paintCan + 1) : (officeArea / paintCan);
+    // Display result
     alert(`Cans required: ${cansRequired}.`);
 }
 // Qs:
@@ -36,12 +42,12 @@ function taskTwo(){
     for(let i = 0; i < 3; i++){
         prices.push({'name':`A${i + 1}`, 'value': +getInput(`Enter Gold A${i + 1} price(max 100 RUB).`, 100)});
     }
-    // Prices sort 
-    prices.sort((a, b) => a.value - b.value)
     // Get all inputs as Obj in buckets
     for(let i = 0; i < 3; i++){
         buckets.push({'name': `B${i + 1}`,  'value': +getInput(`Enter Bucket B${i + 1} max volume in kg(max 100 kg).`, 100)});
     }
+    // Prices sort 
+    prices.sort((a, b) => a.value - b.value)
     // Buckets sort
     buckets.sort((a, b) => a.value - b.value)
     // Put the most expensive gold in the biggest bucket and so on...
@@ -62,8 +68,10 @@ function taskTwo(){
 
 // --------- Task 3 ---------------
 function taskThree(){
+    // Var initialization
     const ticketNum = +getInput('Please enter ticket number (Format: number not more than 999999).', (10 ** 6) - 1);
     const numStr = String(ticketNum);
+    // Calculate and display result
     if (numStr.length == 6 && ((+numStr[0] + +numStr[1] + +numStr[2]) == (+numStr[3] + +numStr[4] + +numStr[5]))) {
         alert('You are lucky!!!');
     }else{
