@@ -33,19 +33,19 @@ function clearOutput(){
 }
 function outputResult(args){
     const output = document.getElementById('output')
-    if(args.length == 3 && args[2] === 1){
+    if(args[2] === 1){
         for(let i = 0; i < args[0].length; i++){
             let answer = document.createElement('span');
             answer.innerHTML = i < args[0].length - 1 ? `"${args[0][i]}" : ${args[1][i]}; ` : `"${args[0][i]}" : ${args[1][i]}.`;
             output.appendChild(answer);
         }
     }   
-    if(args.length < 3 && args[1] != 4){
+    if(args[1] === 2 || args[1] === 3){
         let answer = document.createElement('span');
         answer.innerHTML = args[0];
         output.appendChild(answer);
     } 
-    if(args.length < 3 && args[1] === 4){
+    if(args[1] === 4){
         let answer = document.createElement('span');
         answer.innerHTML = `"${args[0]}"`;
         output.appendChild(answer);
@@ -156,7 +156,7 @@ function dna(){
 function shortestWord(){
     const input = document.getElementById('text');
     const temp = input.value.toLowerCase().split(' ');
-    result = temp.map((item) => item.length).sort().pop()
+    result = temp.map((item) => item.length).sort().reverse().pop();
     return [result, 3];
 }
 
