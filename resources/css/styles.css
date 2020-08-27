@@ -1,0 +1,22 @@
+header {
+    width: 100%;
+    position: fixed;
+    background-color: lightblue;
+    z-index: 100;
+    top: 0px;
+}
+header h1, footer {
+    text-align: center;
+}
+footer {
+    position: fixed;
+    width: 100%;
+    padding-bottom: 20px;
+    bottom: 0px;
+    background-color: lightblue;
+}
+main {
+    top: 80px;
+    position: relative;
+    padding-bottom: 22px;
+}
