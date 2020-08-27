@@ -6,24 +6,87 @@
     <title>Homework 3</title>
     <link rel="stylesheet" href="../resources/css/styles.css">
     <script src="./app/main.js"></script>
+    <style>
+        div {
+            padding: 5px;
+        }
+        .task, .output {
+            border: 2px solid;
+        }
+        .output {
+            min-width: 200px;
+            min-height: 100px;
+            padding: 10px;
+        }
+        .output-cell p {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header><h1>Homework 3</h1></header>
     <main>
-        <div id="task-1">
-            <h3>Task 1</h3>
-            <label for="sentence">Sentence</label>
-            <input id="sentence" type="text" name="sentence" required>
-            <input type="submit" id="submit-1">
-            <div id="output-1"></div>
-        </div>
-        <div id="task-2">
-            <h3>Task 2</h3>
-            <label for="dna">DNA</label>
-            <input id="dna" type="text" name="dna" required>
-            <input type="submit" id="submit-2">
-            <div id="output-2"></div>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Input</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="task-1" class="task">
+                                <h3>Task 1</h3>
+                                <p>"Duplicates"</p>
+                                <label for="sentence">Sentence</label>
+                                <input id="sentence" type="text">
+                                <input type="submit" id="submit-1">
+                            </div>
+                        </td>
+                        <td class="output-cell" rowspan="3">
+                            <p>Output</p>
+                            <button id="clear-output">Clear</button>
+                            <div id="output" class="output"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="task-2" class="task">
+                                <h3>Task 2</h3>
+                                <p>"DNA"</p>
+                                <label for="dna">DNA sequence</label>
+                                <input id="dna" type="text">
+                                <input type="submit" id="submit-2">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="task-3" class="task">
+                                <h3>Task 3</h3>
+                                <p>"Shortest word"</p>
+                                <label for="text">Text</label>
+                                <input id="text" type="text">
+                                <input type="submit" id="submit-3">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="task-4" class="task">
+                                <h3>Task 4</h3>
+                                <p>"Your order, please"</p>
+                                <label for="order">Order</label>
+                                <input id="order" type="text">
+                                <input type="submit" id="submit-4">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+           
+       
     </main>
     <footer>
         <small>"JS Fundamentals" by <a href="https://www.softserveinc.com/en-us">Softserveinc</a> summer 2020.</small>
