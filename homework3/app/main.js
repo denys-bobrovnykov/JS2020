@@ -45,6 +45,11 @@ function outputResult(args){
         answer.innerHTML = args[0];
         output.appendChild(answer);
     } 
+    if(args.length < 3 && args[1] === 4){
+        let answer = document.createElement('span');
+        answer.innerHTML = `"${args[0]}"`;
+        output.appendChild(answer);
+    }
 
       
 }
@@ -160,7 +165,7 @@ function yourOrder(){
     const input = document.getElementById('order');
     const temp = input.value.toLowerCase().split(' ');
     let order = {};
-    let result = [];
+    let result = '';
     for(item of temp){
         for(char of item){
             if(!isNaN(char)) order[char] = item;
