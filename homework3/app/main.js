@@ -50,8 +50,6 @@ function outputResult(args){
         answer.innerHTML = `"${args[0]}"`;
         output.appendChild(answer);
     }
-
-      
 }
 // ______________________________________________________________
 
@@ -115,10 +113,26 @@ function dna(){
     const temp = input.value.toLowerCase().split('');
     let result = [];
     for(char of temp){
-        if(char === 'a')  result.push("T");
-        if(char === 't')  result.push("A");
-        if(char === 'g')  result.push("C");
-        if(char == 'c') result.push('G');
+        switch(char){
+            case 'a':{
+                result.push("T");
+                break;
+            }
+            case 't':{
+                result.push("A");
+                break;
+            }
+            case 'g':{
+                result.push("C");
+                break;
+            }
+            case 'c':{
+                result.push('G');
+                break;
+            }
+            default:
+                result.push(char.toUpperCase());
+        }
     }
     result = result.join('');
     return [result, 2];
