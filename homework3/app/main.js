@@ -40,7 +40,7 @@ function outputResult(args){
             output.appendChild(answer);
         }
     }   
-    if(args.length < 3){
+    if(args.length < 3 && args[1] != 4){
         let answer = document.createElement('span');
         answer.innerHTML = args[0];
         output.appendChild(answer);
