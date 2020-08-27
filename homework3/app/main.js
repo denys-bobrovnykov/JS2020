@@ -178,13 +178,23 @@ function shortestWord(){
 function yourOrder(){
     const input = document.getElementById('order');
     const temp = input.value.toLowerCase().split(' ');
-    let order = {};
-    let result = '';
+    let result = []
     for(item of temp){
         for(char of item){
-            if(!isNaN(char)) order[char] = item;
+            if(!isNaN(char)){
+                result[char - 1] = item;
+            } 
         }
     }
-    result = Object.values(order).join(' ');
+    result = result.join(' ');
+ // This Object solution   
+    // let order = {};
+    // let result = '';
+    // for(item of temp){
+    //     for(char of item){
+    //         if(!isNaN(char)) order[char] = item;
+    //     }
+    // }
+    // result = Object.values(order).join(' ');
     return [result, 4]
 }
