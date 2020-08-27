@@ -178,16 +178,19 @@ function shortestWord(){
 function yourOrder(){
     const input = document.getElementById('order');
     const temp = input.value.toLowerCase().split(' ');
-    let result = []
+    let list = [];// For placing words in order
+    let result = [];// Final array without gaps
     for(item of temp){
         for(char of item){
             if(!isNaN(char)){
-                result[char - 1] = item;
+                list[char - 1] = item;// adding items to list in order
             } 
         }
     }
+    list.forEach((item) => {if(item) result.push(item)});//Push existing items of list in result
     result = result.join(' ');
- // This Object solution   
+
+ // This is Object solution   
     // let order = {};
     // let result = '';
     // for(item of temp){
