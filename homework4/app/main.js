@@ -204,13 +204,13 @@ function myPop(arr) {
 }
 function myPush(arr, element) {
     // arr.splice(arr.length, 0, element);
-    arr[arr.length] = element;
+    arr.length++;
+    arr[arr.length - 1] = element;
 }
 function myShift(arr) {
     // arr.splice(0, 1);
     let element = [];
     element[0] = arr[0];
-    let temp;
     for ( let i = 0; i < arr.length - 1; i++) {
         arr[i] = arr[i + 1];
     }
@@ -218,10 +218,16 @@ function myShift(arr) {
     return element;
 }
 function myUnShift(arr, element) {
-    // arr.splice(0, 0, element);
+    // let temp = [];
+    // temp = arr.splice(0, 1, element);
+    // arr = temp.splice(0, 0,...arr);
+    let temp = [];
+    for ( let i = 0; i < arr.length; i++ ) {
+        temp[i] = arr[i];
+    }
     arr.length++;
-    for ( let i = arr.length - 1; i > 0; i-- ) {
-        arr[i] = arr[i - 1];
+    for ( let i = 1; i < arr.length; i++ ) {
+        arr[i] = temp[i - 1];
     }
     arr[0] = element;
 }   
@@ -234,9 +240,9 @@ function myConcat(arr, arr1) {
     }
     return temp;
 }
-// let arr = [0, 1, 2, 3];
+// let arr = ['0', 1, 2, 3];
 // let arr1 = [6, 7, 8, 9];
-
+// console.log(arr);
 // console.log(`myPop`);
 // console.log(myPop(arr));
 // console.log(arr);
@@ -245,7 +251,7 @@ function myConcat(arr, arr1) {
 // myPush(arr, 3);
 // console.log(arr);
 
-// myUnShift(arr, 10);
+// myUnShift(arr, -1);
 // console.log('unshift -1: ');
 // console.log(arr);
 
