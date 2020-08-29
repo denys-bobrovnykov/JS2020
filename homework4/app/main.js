@@ -77,7 +77,7 @@ function meeting(){
     const input = getInputForTaskOne();//[['XXX', 3], ['XXXXX', 6], ['XXXXXX', 9]]
     //////////////////////////////////
     const myRoom = 8;
-    const chairsInMyRoom = 4;// How many chairs are in the room?
+    const chairsInMyRoom = input[1];// How many chairs are in the room?
     const roomsList = input[0];
     const roomsCount = input[0].length;
     let freeChairsList = [];
@@ -96,7 +96,6 @@ function meeting(){
             let difference = (chairsInRoom - peopleInRoom) > 0 ? chairsInRoom - peopleInRoom : 0; 
             freeSum += difference;
             freeChairsList.push(difference > need ? need : difference);
-            console.log(freeChairsList);
         } 
     // Result evaluation 
         if ( freeSum >= need && need != 0 ) result = `${freeChairsList}`;
