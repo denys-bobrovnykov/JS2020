@@ -122,17 +122,22 @@ function meeting(){
 // 2 if "O" won,
 // 0 if it's a cat's game (i.e. a draw).
 // You may assume that the board passed in is valid in the context of a game of Tic-Tac-Toe.
-
 function ticTac() {
     const chart = getInputForTaskTwo();
+    console.log(chart);
 // Init result as empty field
     let result = -1;
     const chartSide = chart.length;
 // Check rows, columns and diagonals for winner:
-// 1) Check rows
+// 1) Check rows and return if empty cell(s) in chart
     for ( row of chart ) {
         result = checkLine(row);
-        if (result > 0) return [result, 2];
+       if (result < 0) return [result, 2];
+    }    
+// 1) 2. Check rows for winner
+    for ( row of chart ) {
+        result = checkLine(row);
+       if (result > 0) return [result, 2];
     }
 // 2) Check cols
     let col = Array(3);
@@ -141,28 +146,27 @@ function ticTac() {
             col[j] = chart[j][i];
         }
         result = checkLine(col);
-        if ( result > 0) return [result, 2];
+        if (result > 0) return [result, 2];
     }
+    if (result > 0) return [result, 2];
 // 3) Check top/left - bot/right diag
     let diag1 = [];
     for ( let i = 0; i < chartSide; i++ ) {
         diag1.push(chart[i][i]);
     }
     result = checkLine(diag1);
-    if ( result > 0) return [result, 2];
+    if (result > 0) return [result, 2];    
 // 4) Check top/right-bot/left diag
     let diag2 = [];
     for ( let i = chartSide - 1; i >= 0; i-- ) {
         diag2.push(chart[chartSide - i - 1][i]);
     }
     result = checkLine(diag2);
-    if ( result > 0 ) return [result, 2];
-
     return [result, 2];// -1, 0, 1, 2
 }
 // Function to check one line of cells for empty cells and winner
 function checkLine(line){
-    let result = -1;
+    let result = '';
     let sum = 0;
     for ( let i = 0; i < line.length; i++) {
         switch(line[i]) {    
@@ -179,9 +183,9 @@ function checkLine(line){
             }
         } 
     }
-    if (sum === 6) result = '2';
-    if (sum === 3) result = '1';
-    if (sum != 6 && sum != 3) result = '0'
+    if (sum === 6) result = 2;
+    if (sum === 3) result = 1;
+    if (sum != 6 && sum != 3) result = 0;
     return result;
 }
 
