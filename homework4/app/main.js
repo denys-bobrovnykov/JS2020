@@ -74,27 +74,34 @@ function getInputForTaskTwo() {
 // meeting([['XX', 2], ['XXXX', 6], ['XXXXX', 4]], 4) ---> 'Not enough!'
 
 function meeting(){
-    const input = getInputForTaskOne();
+    const input = getInputForTaskOne();//[['XXX', 3], ['XXXXX', 6], ['XXXXXX', 9]]
+    //////////////////////////////////
+    const myRoom = 8;
+    const chairsInMyRoom = 4;// How many chairs are in the room?
     const roomsList = input[0];
     const roomsCount = input[0].length;
-    const need = input[1];
     let freeChairsList = [];
     let result ='';
-    let freeSum = 0;
-    // "freeSum < need" stops iteration when need is satisfied
-    for ( let i = 0; i < roomsCount && freeSum < need; i++ ) {
-        // if no chairs in rooms assign 0 else store how many
-        let chairsInRoom = roomsList[i][1];
-        let peopleInRoom = roomsList[i][0].length;
-        let difference = (chairsInRoom - peopleInRoom) > 0 ? chairsInRoom - peopleInRoom : 0; 
-        freeSum += difference;
-        freeChairsList.push(difference > need ? need : difference);
-        console.log(freeChairsList);
-    } 
-// Result evaluation 
-    if ( need == 0 ) result= 'Game On!';
-    if ( freeSum >= need && need != 0 ) result = `${freeChairsList}`;
-    if ( freeSum < need ) result = 'Not enough!';
+    const need = myRoom - chairsInMyRoom;// How many do we need?
+
+    if ( need == 0 ) {
+        return ['Game On!', 1];
+    } else {
+        let freeSum = 0;
+        // "freeSum < need" stops iteration when need is satisfied
+        for ( let i = 0; i < roomsCount && freeSum < need; i++ ) {
+            // if no chairs in rooms assign 0 else store how many
+            let chairsInRoom = roomsList[i][1];
+            let peopleInRoom = roomsList[i][0].length;
+            let difference = (chairsInRoom - peopleInRoom) > 0 ? chairsInRoom - peopleInRoom : 0; 
+            freeSum += difference;
+            freeChairsList.push(difference > need ? need : difference);
+            console.log(freeChairsList);
+        } 
+    // Result evaluation 
+        if ( freeSum >= need && need != 0 ) result = `${freeChairsList}`;
+        if ( freeSum < need ) result = 'Not enough!';
+        }
     return [result, 1];
 }
 // ----------------------------------------------------------------------------------------------------------------
@@ -182,15 +189,6 @@ function checkLine(line){
 // ----------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 
-// --------------------------  TASK 4  ------------------------------------ //
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------
 
 
 // --------------------------  TASK 3  ------------------------------------ //
