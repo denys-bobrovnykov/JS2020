@@ -231,7 +231,7 @@ function myUnShift(arr, element) {
 function myConcat(arr, arr1) {
     // let temp = arr.slice();
     // temp.splice(temp.length, 1, ...arr1);
-    let temp = []
+    let temp = [];
     for ( let i = 0; i < arr.length + arr1.length; i++) {
         i < arr.length ? temp[i] = arr[i] : temp[i] = arr1[i - arr.length];
     }
