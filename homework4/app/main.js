@@ -137,7 +137,7 @@ function ticTac() {
 // 1) 2. Check rows for winner
     for ( row of chart ) {
         result = checkLine(row);
-       if (result > 0) return [result, 2];
+       if (result > 0) return [result, 2];// return winner and stop
     }
 // 2) Check cols
     let col = Array(3);
@@ -146,7 +146,7 @@ function ticTac() {
             col[j] = chart[j][i];
         }
         result = checkLine(col);
-        if (result > 0) return [result, 2];
+        if (result > 0) return [result, 2];// return winner and stop
     }
     if (result > 0) return [result, 2];
 // 3) Check top/left - bot/right diag
@@ -155,7 +155,7 @@ function ticTac() {
         diag1.push(chart[i][i]);
     }
     result = checkLine(diag1);
-    if (result > 0) return [result, 2];    
+    if (result > 0) return [result, 2];// return winner and stop
 // 4) Check top/right-bot/left diag
     let diag2 = [];
     for ( let i = chartSide - 1; i >= 0; i-- ) {
