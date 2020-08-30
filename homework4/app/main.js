@@ -197,19 +197,19 @@ function checkLine(line){
 // --------------------------  TASK 3  ------------------------------------ //
 
 function myPop(arr) {
-    // const element = arr.splice(arr.length - 1, 1);
+    // const element = arr.splice(- 1, 1);
     // return element;
     const element = arr[arr.length - 1];
     arr.length--;
     return element;
 }
 function myPush(arr, element) {
-    // arr.splice(arr.length, 0, element);
+    // arr.splice(-1, 1, arr.splice(-1)[0], element);
     arr.length++;
     arr[arr.length - 1] = element;
 }
 function myShift(arr) {
-    // arr.splice(0, 1);
+    // return arr.splice(0, 1);
     let element = [];
     element[0] = arr[0];
     for ( let i = 0; i < arr.length - 1; i++) {
@@ -219,9 +219,7 @@ function myShift(arr) {
     return element;
 }
 function myUnShift(arr, element) {
-    // let temp = [];
-    // temp = arr.splice(0, 1, element);
-    // arr = temp.splice(0, 0,...arr);
+    // arr.splice(0, 0, element);
     let temp = [];
     for ( let i = 0; i < arr.length; i++ ) {
         temp[i] = arr[i];
@@ -243,23 +241,23 @@ function myConcat(arr, arr1) {
 }
 // let arr = ['0', 1, 2, 3];
 // let arr1 = [6, 7, 8, 9];
-// console.log(arr);
+// console.log(`Array "0",${arr.slice(1,)}`);
+// console.log(`Array1 ${arr1}`);
 // console.log(`myPop`);
 // console.log(myPop(arr));
 // console.log(arr);
-
-// console.log(`myPush(arr, 3)`);
-// myPush(arr, 3);
+// arr = ['0', 1, 2, 3];
+// console.log(`myPush(arr, 4)`);
+// myPush(arr, 4);
 // console.log(arr);
-
+// arr = ['0', 1, 2, 3];
 // myUnShift(arr, -1);
 // console.log('unshift -1: ');
 // console.log(arr);
-
-// console.log('shift -1: ' );
+// arr = ['0', 1, 2, 3];
+// console.log('shift: ' );
 // console.log(myShift(arr));
 // console.log(arr);
-
+// arr = ['0', 1, 2, 3];
 // console.log(`myConcat(arr, arr1)`);
 // console.log(myConcat(arr, arr1));
-// console.log(arr);
