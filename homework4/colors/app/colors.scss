@@ -1,0 +1,19 @@
+$colors: (
+    (#121212, #2D2F32, #3A474A, #AB19B3, #FDBC2C,#FEEF35, #FC3551),
+    (#191B1D, #2E353C, #4C5C5F, #EB27FB, #FB1260, #D70A1E, #FC1027),
+    (#1237B9, #46629F, #305FD9, #20C4D6, #107D6C, #15994B, #1AB06D),
+    (#1D4186, #394F89, #588EEA, #A9E3E1, #37BE61, #1AB448, #11853F)
+);
+$row: 1;
+$col: 1;
+
+@each $line in $colors {
+    $col: 1;
+    @each $color in $line {
+        .td-#{$row}-#{$col} {
+            background-color: $color;
+        }
+        $col: $col + 1;
+    }
+    $row: $row + 1;
+}

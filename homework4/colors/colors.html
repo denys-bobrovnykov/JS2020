@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 4</title>
     <link rel="stylesheet" href="../../resources/css/styles.css">
-    <script src="app/main.js"></script>
+    <link rel="stylesheet" href="./app/colors.css">
     <style>
+        .white {
+            background-color: white;
+        }
         main {
             z-index: 0;
         }
         table, tr, td, div {
-            padding: 0;
-            border-collapse: collapse;
+            padding: 5px;
+            /* border-collapse: collapse; */
         }
         table {
             width: 300px;
@@ -29,52 +32,14 @@
             height: 100%;
         }
     </style>
-    <script src=""></script>
+    <script src="./app/main.js"></script>
 </head>
-<body>
+<body class="body white">
     <header>
         <h1>Colors</h1>
     </header>
     <main> 
         <button class="color-reset-button">Reset</button>
-        <table>
-            <tr>
-                <td><div class="choice 0-0" style="background-color: rgb(15, 15, 15);"></div></td>
-                <td><div class="choice 0-1" style="background-color: rgb(34, 35, 38);"></div></td>
-                <td><div class="choice 0-2" style="background-color: rgb(44, 55, 58);"></div></td>
-                <td><div class="choice 0-3" style="background-color: rgb(154, 0, 166);"></div></td>
-                <td><div class="choice 0-4" style="background-color: rgb(253, 177,9);"></div></td>
-                <td><div class="choice 0-5" style="background-color: rgb(254,239,53);"></div></td>
-                <td><div class="choice 0-6" style="background-color: rgb(252,53,81);"></div></td>
-            </tr>
-            <tr>
-                <td><div class="choice 1-0" style="background-color: rgb(25,27,29);"></div></td>
-                <td><div class="choice 1-1" style="background-color: rgb(46,53,60);"></div></td>
-                <td><div class="choice 1-2" style="background-color: rgb(76,92,95);"></div></td>
-                <td><div class="choice 1-3" style="background-color: rgb(235,39,251);"></div></td>
-                <td><div class="choice 1-4" style="background-color: rgb(251,18,96);"></div></td>
-                <td><div class="choice 1-5" style="background-color: rgb(215,10,30);"></div></td>
-                <td><div class="choice 1-6" style="background-color: rgb(252,16,39);"></div></td>
-            </tr>
-            <tr>
-                <td><div class="choice 2-0" style="background-color: rgb(18,55,185);"></div></td>
-                <td><div class="choice 2-1" style="background-color: rgb(70,98,159);"></div></td>
-                <td><div class="choice 2-2" style="background-color: rgb(48,95,218);"></div></td>
-                <td><div class="choice 2-3" style="background-color: rgb(32,196,214);"></div></td>
-                <td><div class="choice 2-4" style="background-color: rgb(16,125,108);"></div></td>
-                <td><div class="choice 2-5" style="background-color: rgb(21,153,75);"></div></td>
-                <td><div class="choice 2-6" style="background-color: rgb(26,175,108);"></div></td>
-            </tr>
-            <tr>
-                <td><div class="choice 3-0" style="background-color: rgb(30,66,137);"></div></td>
-                <td><div class="choice 3-1" style="background-color: rgb(57,80,138);"></div></td>
-                <td><div class="choice 3-2" style="background-color: rgb(94,152,250);"></div></td>
-                <td><div class="choice 3-3" style="background-color: rgb(170,228,226);"></div></td>
-                <td><div class="choice 3-4" style="background-color: rgb(57,196,100);"></div></td>
-                <td><div class="choice 3-5" style="background-color: rgb(27,184,73);"></div></td>
-                <td><div class="choice 3-6" style="background-color: rgb(17,136,64);"></div></td>
-            </tr>
-        </table>
     </main>
     <footer>
         <small>"JS Fundamentals" by <a href="https://www.softserveinc.com/en-us">Softserveinc</a> summer 2020.</small>
