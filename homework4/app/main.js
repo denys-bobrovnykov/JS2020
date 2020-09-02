@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector(".task-2-submit").onclick = () => {
         clearOutput()
-        outputResult(ticTac());
+        outputResult(ticTacV2());
     }
 
 
@@ -94,8 +94,8 @@ function meeting(){
             let chairsInRoom = roomsList[i][1];
             let peopleInRoom = roomsList[i][0].length;
             let difference = (chairsInRoom - peopleInRoom) > 0 ? chairsInRoom - peopleInRoom : 0; 
+            freeChairsList.push(freeSum + difference >= need ? need - freeSum : difference);
             freeSum += difference;
-            freeChairsList.push(difference > need ? need : difference);
         } 
     // Result evaluation 
         if ( freeSum >= need && need != 0 ) result = `${freeChairsList}`;
@@ -122,72 +122,40 @@ function meeting(){
 // 2 if "O" won,
 // 0 if it's a cat's game (i.e. a draw).
 // You may assume that the board passed in is valid in the context of a game of Tic-Tac-Toe.
-function ticTac() {
+
+function ticTacV2() {
     const chart = getInputForTaskTwo();
+//     const chart = [
+//         [1 , 2, 1],
+//         [2 , 1, 1],
+//         [0 , 1, 2]
+// ];
     console.log(chart);
-// Init result as empty field
-    let result = -1;
-    const chartSide = chart.length;
-// Check rows, columns and diagonals for winner:
-// 1) Check rows and return if empty cell(s) in chart
+    const oneDList = [].concat(...chart);
+    console.log(oneDList);
+    const winCase = [
+        [0, 1, 2],[3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+    let result;
     for ( row of chart ) {
-        result = checkLine(row);
-       if (result < 0) return [result, 2];
-    }    
-// 1) 2. Check rows for winner
-    for ( row of chart ) {
-        result = checkLine(row);
-       if (result > 0) return [result, 2];// return winner and stop
-    }
-// 2) Check cols
-    let col = Array(3);
-    for ( let i = 0; i < chartSide; i++ ) {
-        for ( let j = 0; j < chartSide; j++ ) {
-            col[j] = chart[j][i];
-        }
-        result = checkLine(col);
-        if (result > 0) return [result, 2];// return winner and stop
-    }
-    if (result > 0) return [result, 2];
-// 3) Check top/left - bot/right diag
-    let diag1 = [];
-    for ( let i = 0; i < chartSide; i++ ) {
-        diag1.push(chart[i][i]);
-    }
-    result = checkLine(diag1);
-    if (result > 0) return [result, 2];// return winner and stop
-// 4) Check top/right-bot/left diag
-    let diag2 = [];
-    for ( let i = chartSide - 1; i >= 0; i-- ) {
-        diag2.push(chart[chartSide - i - 1][i]);
-    }
-    result = checkLine(diag2);
-    return [result, 2];// -1, 0, 1, 2
-}
-// Function to check one line of cells for empty cells and winner
-function checkLine(line){
-    let result = '';
-    let sum = 0;
-    for ( let i = 0; i < line.length; i++) {
-        switch(line[i]) {    
-            case 1: {
-                sum += 1;
-                break;
-            }
-            case 2: {
-                sum += 2;
-                break;
-            }
-            case 0: {
-                return -1;
-            }
+           if (row.includes(0)) return [-1, 2];
         } 
-    }
-    if (sum === 6) result = 2;
-    if (sum === 3) result = 1;
-    if (sum != 6 && sum != 3) result = 0;
-    return result;
+    result = check(oneDList, winCase);
+    console.log(result);
+    return [result, 2];
 }
+function check(oneDList, winCase) {
+    let sum;
+    for ( let i = 0, length = winCase.length; i < length; i++ ) {
+        sum = oneDList[winCase[i][0]] + oneDList[winCase[i][1]] + oneDList[winCase[i][2]];
+        if ( sum == 6 ) return 2;
+        if ( sum == 3 ) return 1;
+    }
+    return 0;
+}
+
 
 // ----------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------

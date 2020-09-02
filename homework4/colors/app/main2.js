@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let div = document.createElement('div');
             div.className = `choice ${i}-${j}`;
             div.style.backgroundColor = colors[i][j];
+            div.addEventListener('click', () => {
+                document.body.style.backgroundColor = color.style.backgroundColor;
+            });
             td.appendChild(div);
             row.appendChild(td);
         }
@@ -25,17 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     button.className = 'color-reset-button';
     button.innerHTML = 'Reset';
     // Button and table push to <main>
-    document.querySelector('main').appendChild(button);
-    document.querySelector('main').appendChild(table);
+    let main = document.querySelector('main');
+    main.appendChild(button);
+    main.appendChild(table);
     // ---------------------- Listeners plus actons ------------------------------------ //
-    document.querySelector('.color-reset-button').addEventListener('click', () => {
+    button.querySelector('.color-reset-button').addEventListener('click', () => {
         document.body.style.backgroundColor = 'white';
-    })
-
-    const cells = document.querySelectorAll('.choice');
-    cells.forEach((color) => {
-        color.addEventListener('click', () => {
-            document.body.style.backgroundColor = color.style.backgroundColor;
-        })
     })
 })
