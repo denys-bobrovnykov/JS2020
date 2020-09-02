@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div.className = `choice ${i}-${j}`;
             div.style.backgroundColor = colors[i][j];
             div.addEventListener('click', () => {
-                document.body.style.backgroundColor = color.style.backgroundColor;
+                document.body.style.backgroundColor = div.style.backgroundColor;
             });
             td.appendChild(div);
             row.appendChild(td);
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     main.appendChild(button);
     main.appendChild(table);
     // ---------------------- Listeners plus actons ------------------------------------ //
-    button.querySelector('.color-reset-button').addEventListener('click', () => {
+    button.addEventListener('click', () => {
         document.body.style.backgroundColor = 'white';
     })
 })
