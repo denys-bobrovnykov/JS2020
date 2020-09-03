@@ -119,8 +119,8 @@ function caseChange() {
     let output = Array(length);
     output.fill('');
     for ( let i = 0; i < length; i++ ) {
-        output[i] = input.charCodeAt(i) < 97 && isNaN(input[i]) ? output[i] = input[i].toLowerCase() : input[i].toUpperCase();
-        if ( !isNaN(input[i]) ) output[i] = '_';
+        output[i] = input[i].toLowerCase() == input[i] && isNaN(input[i]*1) ? input[i].toUpperCase() : input[i].toLowerCase();
+        if ( !isNaN(input[i]*1) ) output[i] = '_';
     }
     return output.join('');
 }

@@ -37,7 +37,7 @@
         box-shadow: 6px 5px 0px -1px rgba(0,0,0,0.75);
         padding-top: 35px;
         font-size: x-large;
-        transition: transform box-shadow 1s;
+        transition: transform 0.3s, box-shadow 0.3s;
         user-select: none;
     }
     .button:hover {
@@ -45,7 +45,7 @@
     }
     .button:active {
         transform: translate(3px, 3px);
-        box-shadow: 6px 5px 0px -1px rgba(255,255,255,0.75);
+        box-shadow: 0px 0px 0px 0px rgba(255,255,255,0.75);
     }
     .off {
         background-color: #8A8A8A;

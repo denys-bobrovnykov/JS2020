@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 // Global VARIABLES
-    const button = document.querySelector('.button');// BUTTON
-    let redBulb = document.querySelector('.light.bulb.r');// RED
-    let yellowBulb = document.querySelector('.light.bulb.y');// YELLOW
-    let greenBulb = document.querySelector('.light.bulb.g');// GREEN
+    const redBulb = document.querySelector('.light.bulb.r');// RED
+    const yellowBulb = document.querySelector('.light.bulb.y');// YELLOW
+    const greenBulb = document.querySelector('.light.bulb.g');// GREEN
+    
     yellowBulb.classList.add('yellow-light');// Iluminate YELLOW
     let currentState = 'neutral-stop';// Set current state (neutral-stop)
 
