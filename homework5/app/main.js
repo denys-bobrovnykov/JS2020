@@ -124,3 +124,24 @@ function caseChange() {
     }
     return output.join('');
 }
+
+// ----------------------- Task 3 --------------------------------- //
+// С помощью reduce, перепишите реализацию следующего кода
+
+const arr1 = ['Apple', 'Banana', 'Pineapple'];
+// map
+//.map(el => el[0]);
+const res1 = arr1.reduce((acc, el) => acc.concat(el[0]), []);
+console.log(res1);
+
+// filter
+//.filter(el => el[0].toLowerCase() == 'a');
+const res2 = arr1.reduce((acc, el) => el[0].toLowerCase() == 'a' ? acc.concat(el) : acc, []);
+console.log(res2);
+
+// forEach
+//.forEach((el, i, arr) => arr[i] = `${i + 1}: ${el}`);
+const res3 = arr1.reduce((acc, el, i) => acc.concat(`${i + 1}: ${el}`),[])
+console.log(res3);
+
+// ---------------------------------------------------------------- //
