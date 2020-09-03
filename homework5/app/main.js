@@ -65,7 +65,6 @@ function getInput(field) {
 // большие буквы на маленькие, маленькие – на большие, а цифры – на знак нижнего подчеркивания.
 function spellNum() {
     const input = getInput('.task-1-input-1');
-    console.log(`Input "${input}"`);
     const words = {
         1: 'one',
         2: 'two',
@@ -99,18 +98,14 @@ function spellNum() {
     return words[input[0] + '0'] + ' ' + words[input[1]];
 }
 function stringInfo() {
-    const input = getInput('.task-1-input-2');
-    const special = '\`!@#$%^&*()_+=-|\\}{\':?/.,~;';
+    const input = getInput('.task-1-input-2').toLowerCase();
     const length = input.length;
     let chars = 0, nums = 0;
     for ( let i = 0; i < length; i++ ) {
-        if ( isNaN(input[i]) && !special.includes(input[i]) ) chars += 1;
-        if ( !isNaN(input[i]) ) nums += 1;
+        if ( isNaN(input[i]*1) &&  input.charCodeAt(i) >= 97 && input.charCodeAt(i) <= 122) chars += 1;
+        if ( !isNaN(input[i]*1) ) nums += 1;
     }
     const other = length - chars - nums;
-    // const chars = temp.filter(char => isNaN(char) && !special.includes(char)).length;
-    // const nums = temp.filter(num => !isNaN(num)).length;
-    // const other = input.length - chars - nums;
     return `Letters:${chars}, Numbers: ${nums}, Other: ${other}`;
 }
 function caseChange() {
