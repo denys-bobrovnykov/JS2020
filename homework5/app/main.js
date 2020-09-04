@@ -64,7 +64,7 @@ function getInput(field) {
 // которая заменяет в полученной строке 
 // большие буквы на маленькие, маленькие – на большие, а цифры – на знак нижнего подчеркивания.
 function spellNum() {
-    const input = getInput('.task-1-input-1');
+    const input = +getInput('.task-1-input-1');
     const words = {
         1: 'one',
         2: 'two',
@@ -93,9 +93,10 @@ function spellNum() {
         80: 'eighty',
         90: 'ninety'
     }
-    if ( isNaN(input) || input.length < 2) return 'Error';
-    if ( input[0] == 1 ) return words[input];
-    return words[input[0] + '0'] + ' ' + words[input[1]];
+    const inputStr = String(input);
+    if ( inputStr.length < 2 ) return 'Error';
+    if ( inputStr[0] == 1 ) return words[inputStr];
+    return words[inputStr[0] + '0'] + ' ' + words[inputStr[1]];
 }
 function stringInfo() {
     const input = getInput('.task-1-input-2').toLowerCase();
@@ -131,7 +132,9 @@ console.log(res1);
 
 // filter
 //.filter(el => el[0].toLowerCase() == 'a');
-const res2 = arr1.reduce((acc, el) => el[0].toLowerCase() == 'a' ? acc.concat(el) : acc, []);
+const res2 = arr1.reduce((acc, el,) => {
+    el[0].toLowerCase() == 'a' ? acc.concat(el) : acc
+}, []);
 console.log(res2);
 
 // forEach

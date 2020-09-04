@@ -1,38 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 // Global VARIABLES
-    const redBulb = document.querySelector('.light.bulb.r');// RED
-    const yellowBulb = document.querySelector('.light.bulb.y');// YELLOW
-    const greenBulb = document.querySelector('.light.bulb.g');// GREEN
-
-    yellowBulb.classList.toggle('yellow-light');// Iluminate YELLOW
-    let currentState = 'wait-stop';// Set current state (neutral-stop)
-
-    // Listener for the whole traffic light element //
+    const lights = document.querySelectorAll('.light.bulb');
+    const colors = ['red-light', 'yellow-light', 'green-light', 'off'];
+    lights[1].classList.toggle(colors[1]);// toogle yellow
+    let currentState = 1;// Set current state (neutral-stop)
     document.querySelector('.device').addEventListener('click', (event) => {
         if ( event.target.className != 'button' ) return; // if not button element --> DO NOT FIRE
-        yellowBulb.classList.toggle('yellow-light');// Toogle YELLOW
-        currentState = switchLight(currentState, redBulb, greenBulb); // Toggle RED or GREEN
+        lights[currentState].classList.toggle(colors[currentState]); // toggle Current light
+        currentState = ++currentState % 3; // returns next number
+        lights[currentState].classList.toggle(colors[currentState]); // illuminate Next light
     });
-
 })
-// ______________________ Function _________________________________ //
-function switchLight(currentState, redBulb, greenBulb) {
-    switch(currentState) {
-        case 'wait-stop': {
-            redBulb.classList.toggle('red-light');
-            return 'stop';
-        }
-        case 'stop': {
-            redBulb.classList.toggle('red-light');
-            return 'wait-go';
-        }
-        case 'wait-go': {
-            greenBulb.classList.toggle('green-light');
-            return 'go';
-        }
-        case 'go': {
-            greenBulb.classList.toggle('green-light');
-            return 'wait-stop';
-        }
-    }
-}
