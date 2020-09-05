@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Init elements variables
-    const answer = document.querySelector('.answer-input')
+    const answer = document.querySelector('.answer-input');
     const submitButton = document.querySelector('.answer-submit');
     const nextButton = document.querySelector('.try-again');
     const response = document.querySelector('.answer-check');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 result = displayQuestion();
                 response.innerHTML = 'Try again';
                 answer.value = '';
-                console.log(result);
+                // console.log(result);
                 return;
             }
             response.innerHTML = 'Correct';
