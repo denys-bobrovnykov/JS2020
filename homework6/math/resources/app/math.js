@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             response.innerHTML = 'Correct';
+            answer.value = '';
+            result =displayQuestion();
         };
         if ( event.target == nextButton ) { // If click on NEXT
             result = displayQuestion();
