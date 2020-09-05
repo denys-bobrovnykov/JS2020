@@ -8,13 +8,11 @@ function fillgrid(delay) {
     let color = Array(3).fill('');
     let i = 0;
     let timer = setInterval(() => {
-        let cell = table[Math.floor(Math.random() * 100)];// select initial cell
+        let index = Math.floor(Math.random() * (table.length));// Choose random index from remaining cells
+        let cell = table[index];// select cell
         let colorRand = color.map(item => item = Math.floor(Math.random() * 256)); // get random color
-        for ( ;cell.classList.contains('done'); ) {// choose unused cell
-            cell = table[Math.floor(Math.random() * 100)];
-        }
         cell.style.backgroundColor = `rgb(${[...colorRand]})`;// spread color Arr as R G B!!!
-        cell.classList.add('done');// add 'done' flag to cell
+        table.splice(index, 1);// delete used cell from list of cells
         if (i == 99) {
             clearInterval(timer);
             let h1 = document.createElement('h1');
@@ -22,7 +20,6 @@ function fillgrid(delay) {
             document.querySelector('main').append(h1);
             window.scroll(0, document.body.scrollHeight);
         };
-        console.log(i);
         i++;
     }, delay);    
 }
