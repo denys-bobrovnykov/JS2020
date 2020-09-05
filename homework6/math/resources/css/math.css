@@ -1,0 +1,22 @@
+* {
+    padding: 5px;
+}
+table {
+    width: 50%;
+}
+.border {
+    border: 1px solid black;
+}
+td {
+    height: 100px;
+}
+.half {
+    width: 50%;
+}
+.answer-container {
+    vertical-align: top;
+}
+.question-container {
+    text-align: center;
+    min-width: 90px;
+}

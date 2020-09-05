@@ -1,0 +1,17 @@
+.border {
+    /* border: 1px solid black; */
+}
+.grid {
+    border-collapse: collapse;
+    width: 600px;
+    height: 600px;
+    margin-top: 40px;
+}
+.cell {
+    height: 60px;
+    width: 60px;
+}
+h1 {
+    text-align: center;
+    width: 600px;
+}
