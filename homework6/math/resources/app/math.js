@@ -36,7 +36,7 @@ function displayQuestion() {
     return evaluate(num1, num2, operator).toFixed(1);
 }
 function random(from, to) {
-    return Math.floor(Math.random() * (to - from) + from + 1);
+    return Math.floor(Math.random() * (to - from + 1) + from);
 }
 function evaluate(num1, num2, operator) {
     switch(operator) {
