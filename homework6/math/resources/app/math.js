@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const answer = document.querySelector('.answer-input');
     const submitButton = document.querySelector('.answer-submit');
     const nextButton = document.querySelector('.try-again');
-    const response = document.querySelector('.answer-check');
     // Set initial state
     let result = displayQuestion();
     // Add event global listener
@@ -13,15 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if ( +answer.value != result ) {
                 answer.value = '';
                 result = displayQuestion();
-                response.innerHTML = 'Try again';
+                alert('Try again');
                 return;
             }
-            response.innerHTML = 'Correct';
+            alert('Correct');
             answer.value = '';
             result = displayQuestion();
         };
         if ( event.target == nextButton ) { // If click on NEXT
-            response.innerHTML = '';
             result = displayQuestion();
             answer.value = '';
         }
