@@ -15,3 +15,10 @@ h1 {
     text-align: center;
     width: 600px;
 }
+.start-label {
+    position: fixed;
+    top: 80px;
+}
+.hidden {
+    display: none;
+}

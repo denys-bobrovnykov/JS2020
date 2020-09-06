@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
-    fillgrid(100);
+     fillgrid(100);
     
 })
 function fillgrid(delay) {

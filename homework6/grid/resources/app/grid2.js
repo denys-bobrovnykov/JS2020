@@ -1,9 +1,16 @@
+// =============== Main ============================ //
 document.addEventListener('DOMContentLoaded', () => {
-  
-    fillgrid(100);
+    const goButton = document.querySelector('.go-button');
+    const intervalInput = document.querySelector('.select-interval');
+    const control = document.querySelector('.start-control');
     
+    goButton.addEventListener('click', function handler(){
+        control.classList.add('hidden');
+        fillgrid(intervalInput.value);
+    });    
 })
-function fillgrid(delay) {
+// ============== Functions ======================= //
+function fillgrid(delay) { // Creates table and fills colors
     const table = createTable();
     let color = Array(3).fill('');
     let i = 0;
