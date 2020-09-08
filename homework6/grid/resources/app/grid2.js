@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============== Functions ======================= //
 function fillgrid(delay) { // Creates table and fills colors
     const table = createTable();
-    let color = Array(3).fill('');
+    // let color = Array(3).fill('');
     let i = 0;
     let timer = setInterval(() => {
         let cell = table[Math.floor(Math.random() * 100)];// select initial cell
-        let colorRand = color.map(item => item = Math.floor(Math.random() * 256)); // get random color
+        // let colorRand = color.map(item => item = Math.floor(Math.random() * 256)); // get random color
         for ( ;cell.classList.contains('done'); ) {// choose unused cell
             cell = table[Math.floor(Math.random() * 100)];
         }
-        cell.style.backgroundColor = `rgb(${[...colorRand]})`;// spread color Arr as R G B!!!
+        cell.style.backgroundColor = `#${Math.floor(Math.random()*256*256*256).toString(16)}`;// spread color Arr as R G B!!!
         cell.classList.add('done');// add 'done' flag to cell
         if (i == 99) {
             clearInterval(timer);

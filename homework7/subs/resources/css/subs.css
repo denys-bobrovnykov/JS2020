@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+.inputs-container {
+    width: 350px;
+    padding-left: 10px;
+}
+.output-container {
+    min-width: 350px;
+    max-width: 500px;
+    min-height: 100px;
+    border: 1px solid black;
+    padding-left: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.inputs-field {
+    border-radius: 10px;
+}
+.container-label {
+    font-weight: bold;
+    margin-top: 2px
+}
+.submit-button {
+    margin: 10px 10px 5px 10px;
+    float: right;
+}
+.submit-button:hover {
+    cursor: pointer;
+}
