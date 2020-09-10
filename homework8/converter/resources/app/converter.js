@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function ipsBetween(ip1, ip2) {
-        const num1 = ip1.split('.').reverse().reduce((acc,el, i) => +acc + +el*(256**i));
-        const num2 = ip2.split('.').reverse().reduce((acc,el, i) => +acc + +el*(256**i));
+        const num1 = ip1.split('.').reverse().reduce((acc,el, i) => +acc + el*(256**i));
+        const num2 = ip2.split('.').reverse().reduce((acc,el, i) => +acc + el*(256**i));
         return num2 - num1;
     }
 })
