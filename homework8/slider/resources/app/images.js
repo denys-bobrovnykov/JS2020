@@ -1,4 +1,8 @@
-export const images = ['6150787-v485d97219c6-6.jpg', '6141913-v4d0634d6201-6.jpg',
-    '6141357-v42f8c453e21-6.jpg',
-    '2387699-v40-15.jpg',
-    '2387620-v40-15.jpg'];
+export const images = ['IMG_4684.JPG',
+'IMG_4683.JPG',
+'IMG_4682.JPG',
+'IMG_4681.JPG',
+'IMG_4680.JPG',
+'IMG_4679.JPG'
+];
+export default images;

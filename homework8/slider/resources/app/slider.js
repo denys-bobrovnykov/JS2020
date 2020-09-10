@@ -1,10 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+import {images} from './images.js';
 
-    const images = ['6150787-v485d97219c6-6.jpg', '6141913-v4d0634d6201-6.jpg',
-    '6141357-v42f8c453e21-6.jpg',
-    '2387699-v40-15.jpg',
-    '2387620-v40-15.jpg'
-    ];
+document.addEventListener('DOMContentLoaded', () => {
 
     const albumSize = images.length;
     const controls = document.querySelector('.controls');
