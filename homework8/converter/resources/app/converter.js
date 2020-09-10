@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputForm.addEventListener('submit', () => {
         event.preventDefault();
-        outputDiv.innerHTML = `Ips between: ${ipsBetween(inputForm.firstIp.value, inputForm.secondIp.value)}`;
+        outputDiv.innerHTML = `${ipsBetween(inputForm.firstIp.value, inputForm.secondIp.value)}`;
     })
 
 
