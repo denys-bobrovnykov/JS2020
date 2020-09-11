@@ -1,24 +1,32 @@
 import {images} from './images.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const albumSize = images.length;
-    const controls = document.querySelector('.controls');
+    const slideNext = document.querySelector('.slide-right');
+    const slidePrev = document.querySelector('.slide-left');
+    const curr = document.querySelector('span');
     let slideWindow = document.querySelector('.slide-window');
 
 
-    let i = 0;
+    let imageNum = 0;
+
     slideWindow.innerHTML = images.map(img => `<img src="./resources/img/${img}" height="438" width="700">`).join('');
 
-    controls.addEventListener('click', (e) => {
-        if ( e.target.className == 'slide-left' ) {
-            i--;
-            i = i >= 0 ? i : albumSize - 1;
+    slideNext.addEventListener('click', () => changeImage());
+    slidePrev.addEventListener('click', () => changeImage('prev'));
+
+    function changeImage(dir = 'next'){
+        if(dir == 'next'){
+            imageNum++;
+            imageNum = imageNum <= albumSize - 1 ? imageNum : 0;
+        }else{
+            imageNum--;
+            imageNum = imageNum >= 0 ? imageNum : albumSize - 1;
         }
-        if ( e.target.className == 'slide-right' ) {
-            i++;
-            i = i <= albumSize - 1 ? i : 0;
-        }
-        slideWindow.style.left = `${700*i*(-1)}px`;
-    })
+        slideWindow.style.left = (-1) * 700 * imageNum + 'px';
+        slideNext.innerHTML = imageNum == images.length - 1 ? 'First' : `Next: ${imageNum + 1}`;
+        slidePrev.innerHTML = imageNum == 0 ? 'Last' : `Prev: ${imageNum - 1}`;
+        curr.innerHTML = `Currrent: ${imageNum}`;
+
+    }
 })

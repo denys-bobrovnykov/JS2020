@@ -5,6 +5,7 @@
     overflow: hidden;
 }
 .slide-window {
+    left: 0;
     position: relative;
     transition: left 1s;
     display: flex;
