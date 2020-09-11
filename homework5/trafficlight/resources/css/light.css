@@ -38,7 +38,10 @@
         padding-top: 35px;
         font-size: x-large;
         transition: transform 0.3s, box-shadow 0.3s;
-        user-select: none;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
     }
     .button:hover {
         cursor: pointer;
