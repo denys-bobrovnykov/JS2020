@@ -77,6 +77,6 @@ console.log('circle.setRadius(10)');
 
 circle.setRadius(10);
 
-console.log('circle.getRadius ->', circle.getRadius());
-console.log('circle.area ->',circle.area());
-console.log('circle.length ->',circle.length());
+console.log('circle.getRadius() ->', circle.getRadius());
+console.log('circle.area() ->',circle.area());
+console.log('circle.length() ->',circle.length());
