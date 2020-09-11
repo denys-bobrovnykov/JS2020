@@ -27,10 +27,15 @@
             <hr>
             <h4>Circle</h4>
             Radius
-            <input name="radius" type="number" style="width: 40px;" min="0" max="50"><button name="draw" class="draw-button">Draw</button>
-            <div class="circle">
-                <button class="area-button" disabled>Area</button><br>
-                <button class="length-button" disabled>Length</button>    
+            <div class="circle-task-container">
+                <input class="radius-input" type="number" style="width: 40px;" min="100" max="500" value="200">
+                <button class="draw-button">Draw</button>
+                <div class="circle">
+                    <div class="circle-buttons relative hidden">
+                        <!-- <button class="area-button" >Area</button><br>
+                        <button class="length-button" >Length</button>     -->
+                    </div>
+                </div>
             </div>
     </main>
     <footer>

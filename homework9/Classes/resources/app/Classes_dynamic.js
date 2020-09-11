@@ -26,15 +26,6 @@ export class MarkerRefillable extends Marker {
 }
 // ========================================================= //
 
-// ------- Demo ----------- //
-// const marker = new Marker('grey', 10);
-// marker.print('ffffjljadshfjkdsahjkfhsdalkjfha');
-
-// const refillable = new MarkerRefillable('red', 110);
-// console.log(refillable.ink);
-// refillable.print('Qwsa sd                     j');
-// ------------------------- //
-
 // -------------------- Circle class ------------------------ //
 export class Circle {
     _radius = 0;
@@ -55,10 +46,3 @@ export class Circle {
     }
 }
 // ========================================================= //
-
-// ----------- Demo --------------- //
-const circle = new Circle();
-circle.setRadius(10);
-console.log('Get radius', circle.getRadius());
-console.log(circle.area());
-console.log(circle.length());

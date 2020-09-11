@@ -7,7 +7,18 @@ button {
 }
 .circle {
     border-radius: 50%;
+    text-align: center;
 }
 .hidden {
-    visibility: hidden;
+    display: none;
+}
+.border {
+    border: 2px solid black;
+}
+.relative {
+    position: relative;
+}
+.print-result {
+    max-width: 700px;
+    word-wrap: break-word;
 }
