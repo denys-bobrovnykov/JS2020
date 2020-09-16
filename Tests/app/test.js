@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navHome = document.querySelector('.nav-home')
   }
 
-
   class TestMenu {
 
     questions = JSON.parse(localStorage.getItem('questions'));
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     forDisplay; //index of array of selected questions
     forCheck; //number of question in database for answer check
     questionTotal = 0;// Total questions in selected chapters
-    
+
     selectChapters() {
       for ( let j of this.chapters) {
           for ( let k = this.chaptersRanges[j][0]; k <= this.chaptersRanges[j][1]; k++ ) {
