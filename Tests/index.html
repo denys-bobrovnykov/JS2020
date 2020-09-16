@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <script src="./app/welcome.js" type="text/javascript"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome</h1>
+        <hr>
+        <nav>
+            <ul>
+                <li><a href="./statistic.html">Stats</a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main>
+        <form action="#" id="mode-select">
+            <label>
+                <select name="chapters" id="chapters-select" multiple size="20">
+                    <option value="1">1. НОРМАЛЬНА ЕКГ</option>
+                    <option value="2">2. ЕКГ ПРИ ГIПЕРТРОФIЇ ПЕРЕДСЕРДЬ I ШЛУНОЧКIВ</option>
+                    <option value="3">3. ЕКГ ПРИ ПОРУШЕННЯХ ВНУТРIШНЬОШЛУНОЧКОВОЇ ПРОВIДНОСТI</option>
+                    <option value="4">4. ЕЛЕКТРОКАРДІОГРАФІЧНІ СИНДРОМИ ТА ФЕНОМЕНИ</option>
+                    <option value="5">5. ФУНКЦІОНАЛЬНІ ПРОБИ</option>
+                    <option value="6">6. ЕКГ ПРИ IШЕМIЧНIЙ ХВОРОБI СЕРЦЯ</option>
+                    <option value="7">7. ЕКГ ПРИ ПОРУШЕННI АВТОМАТИЗМУ</option>
+                    <option value="8">8. ЕКГ ПРИ ЕКСТРАСИСТОЛIЇ ТА ПАРОКСИЗМАЛЬНИХ ТАХІАРИТМІЯХ</option>
+                    <option value="9">9. ЕКГ ПРИ СИНОАТРIАЛЬНИХ, МIЖПЕРЕДСЕРДНИХ ТА АТРIОВЕНТРИКУЛЯРНИХ БЛОКАДАХ</option>
+                    <option value="10">10. ЕКГ ПРИ ПОРУШЕННЯХ ЕЛЕКТРОЛIТНОГО ОБМIНУ, ДЕЯКИХ ХВОРОБАХ І СТАНАХ</option>
+                    <option value="11">11. ДIАГНОСТИКА ВАД СЕРЦЯ</option>
+                    <option value="12">12. ЕХОКАРДІОГРАФІЯ</option>
+                    <option value="13">13. ФУНКЦІОНАЛЬНІ МЕТОДИ ДОСЛІДЖЕННЯ ДИХАЛЬНОЇ ТА НЕРВОВОЇ СИСТЕМ</option>
+                    <option value="14">14. IНШI ФУНКЦIОНАЛЬНI МЕТОДИ ДОСЛIДЖЕННЯ СЕРЦЯ ТА СУДИН</option>
+                    <option value="15">15. НЕВІДКЛАДНІ СТАНИ</option>
+                </select>
+            </label>
+            <label>Practice
+                <input name="mode" type="radio" value="practice" checked>
+            </label>
+            <label>Test
+                <input name="mode" type="radio" value="test">
+            </label>
+            <button class="go-button"><a href="./test.html">Submit</a></button>
+        </form>
+    </main>
+</body>
+</html>
