@@ -48,14 +48,16 @@ refillable.print('Print after refill.');
 
 // ================== Circle class ========================= //
 export class Circle {
-    _radius = 0;
-    setRadius(value) {
-        this._radius = value;
+    constructor(radius) {
+        this._radius = radius;
     }
-    getRadius() {
+    get radius() {
         return this._radius;
     }
-    getDiameter() {
+    set radius(radius) {
+        this._radius = radius;
+    }
+    get diameter() {
         return this._radius * 2;
     }
     area() {
@@ -70,13 +72,9 @@ export class Circle {
 // --------------------------- Demo ----------------------- //
 console.log('-------------- Cricle demo ----------------');
 
-const circle = new Circle();
+const circle = new Circle(5);
 
 console.log('const circle = new Circle()');
-console.log('circle.setRadius(10)');
-
-circle.setRadius(10);
-
-console.log('circle.getRadius() ->', circle.getRadius());
+console.log('circle.radius ->', circle.radius);
 console.log('circle.area() ->',circle.area());
 console.log('circle.length() ->',circle.length());
