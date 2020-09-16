@@ -31,13 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     forDisplay; //index of array of selected questions
     forCheck; //number of question in database for answer check
     questionTotal = 0;// Total questions in selected chapters
-    constructor(){
-      this.testContainer = document.querySelector('.test-container');
-      this.questionText = document.querySelector('.question-text');
-      this.submitAnswer = document.querySelector('.submit-answer');
-      this.answerInput = document.querySelector('.answer-input');
-      this.submitForm = document.querySelector('#answer-form');
-    }
+    
     selectChapters() {
       for ( let j of this.chapters) {
           for ( let k = this.chaptersRanges[j][0]; k <= this.chaptersRanges[j][1]; k++ ) {
@@ -47,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       this.forDisplay = 0;
       this.questionTotal = this.selectedQuestions.length;
+    }
+
+    constructor(){
+      this.testContainer = document.querySelector('.test-container');
+      this.questionText = document.querySelector('.question-text');
+      this.submitAnswer = document.querySelector('.submit-answer');
+      this.answerInput = document.querySelector('.answer-input');
+      this.submitForm = document.querySelector('#answer-form');
+      this.selectChapters();
     }
     randomise() {
       for ( let i = 0; i < this.selectedQuestions.length; i++ ) {
@@ -90,8 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ------------- Main ------------ //
   const test = new TestMenu();
-
-  test.selectChapters();
 
   test.randomise();
 
