@@ -4,7 +4,7 @@ if ( !localStorage.getItem('questions') ) {
   fetch('./questions/QuestionsObj.json')
   .then(res => res.json())
   .then(data => {
-    storeData(data);
+    storeData(data,'questions');
     console.log('db loaded')
     if ( !localStorage.getItem('answers') ) {
       console.group('Loading answers db');
@@ -19,7 +19,7 @@ if ( !localStorage.getItem('questions') ) {
   })
   .catch(err => console.error(err));
 }
-function storeData(data, name = 'questions') {
+function storeData(data, name) {
   localStorage.setItem(name, JSON.stringify(data));
 
 } 
