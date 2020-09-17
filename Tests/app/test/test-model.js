@@ -33,7 +33,8 @@ export default class TestModel{
     this.questionTotal = 0;
     this.selectedQuestions = [];
     this.questionTotal = 0;// Total questions in selected chapters
-    this.wrongAnswers = [];
+    this.wrongAnswersList = [];
+    this.correctAnswList = [];
 
     this.view = new TestView();
     this.selectChapters();
@@ -62,22 +63,25 @@ export default class TestModel{
     this.correctAnsw = [];
     this.correct = false;
     const checked = Array.from(nodeList).reduce((acc, el) => el.checked ? acc.concat(el.value) : acc, []).join(','); 
-    this.checkedAnsw.push(checked);// checked answers
+    this.checkedAnsw=checked.split(',');// checked answers
 
-    console.log('checked', checked);
+    console.log('checked', this.checkedAnsw);
 
     this.correctAnsw.push(...this.answers[n].split(','));// correct answers
 
     console.log('correct', this.correctAnsw);
 
+    const answer = {'questionNum': n, 'yourAnsw': checked, 'correcAnsw': this.correctAnsw};
+
     if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {
       this.correct = true;
+      this.correctAnswList.push(answer);
+      localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswList))
     } else {
       this.correct = false;
       // alert(this.selectedQuestions[this.forDisplay].a[this.answers[n]] || this.answers[n]);
-      const wrongAnswer = {'questionNum': n, 'yourAnsw': checked, 'correcAnsw': this.correctAnsw};
-      this.wrongAnswers.push(wrongAnswer);
-      localStorage.setItem('wrongAnswers', this.wrongAnswers);
+      this.wrongAnswersList.push(answer);
+      localStorage.setItem('wrongAnswers', JSON.stringify(this.wrongAnswersList));
       console.log(this.wrongAnswers);
     }
   }

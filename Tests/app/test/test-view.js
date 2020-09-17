@@ -7,6 +7,9 @@ export default class TestView{
       this.submitAnswer = document.querySelector('.submit-answer');
       this.answerInput = document.querySelector('.answer-input');
       this.submitForm = document.querySelector('#answer-form');
+      this.submitButton = document.createElement('input');
+      this.submitButton.type = 'submit';
+
       this.nextButton = document.querySelector('.next-question');
 
       this.submitForm.addEventListener('submit', submitAnsw);
@@ -25,7 +28,8 @@ export default class TestView{
         for ( let key in selectedQuestions[n].a ) {
           this.submitForm.innerHTML += ` <span class="answers" ><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span><br>`;
         }
-        this.submitForm.innerHTML += '<input type="submit" />';
+        // this.submitButton.disabled = false;
+        this.submitForm.append(this.submitButton);
     }
 
     selectAnswers(){
@@ -33,14 +37,14 @@ export default class TestView{
     }
 
     renderResult(options, checked, correct){
+      // this.submitButton.disabled = true;
       console.log(options);
       options.forEach(el => {
-        let id;
         if( checked.includes(el.id) && !correct.includes(el.id)) {
           el.parentElement.classList.add('wrong-color');
-          id = el.id;
         }
         if ( correct.includes(el.id) ) el.parentElement.classList.add('correct-color');
       })
+
     }
 }
