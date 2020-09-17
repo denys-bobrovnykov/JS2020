@@ -1,7 +1,9 @@
+
 .test-container {
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
     border: 2px solid black;
+    font-size: large;
 }
 span:hover {
     cursor: pointer;;
@@ -11,4 +13,12 @@ span:hover {
 }
 .correct-color {
     background-color: rgba(125, 189, 125,0.7);
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+
 }
