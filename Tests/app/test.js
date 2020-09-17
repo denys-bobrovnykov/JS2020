@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  class Navbar {
-    navHome = document.querySelector('.nav-home')
-  }
-
   class TestMenu {
 
 
