@@ -25,7 +25,9 @@ export default class TestModel{
     this.answers = JSON.parse(localStorage.getItem('answers'));
     this.chapters = JSON.parse(localStorage.getItem('chapters'));
     this.forDisplay = 0;
-    this.forCheck; //number of question in database for answer check
+    this.forCheck;
+    this.checkedAnsw;
+    this.correctAnsw; //number of question in database for answer check
     // this.selectChapters();
     this.questionTotal = 0;
     this.selectedQuestions = [];
@@ -54,14 +56,18 @@ export default class TestModel{
   }
 
   check(nodeList, n = this.selectedQuestions[this.forDisplay].num) {
-  const checked = Array.from(nodeList).reduce((acc, el) => el.checked ? acc.concat(el.value) : acc, []).join(','); 
-  console.log(n);
-  console.log(nodeList);
-  if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {
-    alert('Correct');
-    } else {
-        alert(this.selectedQuestions[this.forDisplay].a[this.answers[n]] || this.answers[n]);
-    }
+    this.checkedAnsw = [];
+    this.correctAnsw = [];
+    const checked = Array.from(nodeList).reduce((acc, el) => el.checked ? acc.concat(el.value) : acc, []).join(','); 
+    this.checkedAnsw.push(checked);// checked answers
+    console.log('checked', checked);
+    this.correctAnsw.push(...this.answers[n].split(','));// correct answers
+    console.log('correct', this.correctAnsw);
+    if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {
+      // alert('Correct');
+      } else {
+          // alert(this.selectedQuestions[this.forDisplay].a[this.answers[n]] || this.answers[n]);
+      }
   }
 
   selectNext() {

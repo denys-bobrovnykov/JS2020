@@ -5,7 +5,7 @@ export default class TestControl {
     
     constructor(){
 
-        this.view = new TestView(this.submitAnswer, this.onNextClick);
+        this.view = new TestView(this.submitAnswer, this.checkBox, this.onNextClick);
         this.model = new TestModel();
         this.model.selectChapters();
         this.model.randomise();
@@ -17,6 +17,15 @@ export default class TestControl {
             e.preventDefault();
             const options = this.view.selectAnswers();;
             this.model.check(options);
+            console.log(this.model.checkedAnsw);
+            this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
+    }
+
+    checkBox = (e) => {
+        console.log(e.target.firstElementChild);
+        if ( e.target.tagName == 'SPAN' ) {
+            e.target.firstElementChild.checked = 'true';
+        }
     }
 
     onNextClick = () => {

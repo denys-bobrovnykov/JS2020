@@ -1,6 +1,6 @@
 export default class TestView{
 
-    constructor(submitAnsw, nextQ){
+    constructor(submitAnsw, checkBox, nextQ){
 
       this.testContainer = document.querySelector('.test-container');
       this.questionText = document.querySelector('.question-text');
@@ -10,6 +10,7 @@ export default class TestView{
       this.nextButton = document.querySelector('.next-question');
 
       this.submitForm.addEventListener('submit', submitAnsw);
+      this.submitForm.addEventListener('click', checkBox);
       this.nextButton.addEventListener('click', nextQ);
     }
 
@@ -22,7 +23,7 @@ export default class TestView{
         this.clear();
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
         for ( let key in selectedQuestions[n].a ) {
-          this.submitForm.innerHTML += `<input type="checkbox" value="${key}" name="answer" class="options"/> <span>${selectedQuestions[n].a[key]}</span><br>`;
+          this.submitForm.innerHTML += ` <span class="answers" ><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span><br>`;
         }
         this.submitForm.innerHTML += '<input type="submit" />';
     }
@@ -30,5 +31,16 @@ export default class TestView{
     selectAnswers(){
       return document.querySelectorAll('.options');
     }
-  
+
+    renderResult(options, checked, correct){
+      console.log(options);
+      options.forEach(el => {
+        let id;
+        if( checked.includes(el.id) && !correct.includes(el.id)) {
+          el.parentElement.style.backgroundColor = 'orange';
+          id = el.id;
+        }
+        if ( correct.includes(el.id) ) el.parentElement.style.backgroundColor = 'green';
+      })
+    }
 }
