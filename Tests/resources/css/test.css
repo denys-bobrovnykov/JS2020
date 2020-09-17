@@ -4,5 +4,11 @@
     border: 2px solid black;
 }
 span:hover {
-    background-color: chartreuse;
+    cursor: pointer;;
+}
+.wrong-color {
+    background-color: rgba(211, 113, 83,0.7);
+}
+.correct-color {
+    background-color: rgba(125, 189, 125,0.7);
 }

@@ -37,10 +37,10 @@ export default class TestView{
       options.forEach(el => {
         let id;
         if( checked.includes(el.id) && !correct.includes(el.id)) {
-          el.parentElement.style.backgroundColor = 'orange';
+          el.parentElement.classList.add('wrong-color');
           id = el.id;
         }
-        if ( correct.includes(el.id) ) el.parentElement.style.backgroundColor = 'green';
+        if ( correct.includes(el.id) ) el.parentElement.classList.add('correct-color');
       })
     }
 }
