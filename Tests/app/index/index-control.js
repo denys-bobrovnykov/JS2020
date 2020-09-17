@@ -4,12 +4,12 @@ import IndexView from "./index-view.js"
 export default class IndexControl{
     constructor(){
         this.model = new IndexModel();
-        this.view = new IndexView(this.selectChapter, this.goClick);
+        this.view = new IndexView(this.selectChapter.bind(this), this.goClick.bind(this));
     }
-    goClick = () => {
+    goClick() {
         this.storeData();
     }
-    selectChapter = () => {
+    selectChapter() {
         console.log('select');
         this.model.selectOptions(this.view.selectElement.options);
     }
