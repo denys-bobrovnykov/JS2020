@@ -10,8 +10,9 @@ export default class TestView{
       //Elements create
       this.submitButton = document.createElement('input');
       this.submitButton.type = 'submit';
+      this.submitButton.classList.add('check-button');
       //Buttons select
-      this.nextButton = document.querySelector('.next-question');
+      this.nextButton = document.querySelector('.next-button');
       this.prevButton = document.querySelector('.prev-button');
       this.homeButton = document.querySelector('.nav-home');
       // Listeners
@@ -36,7 +37,7 @@ export default class TestView{
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
         for ( let key in selectedQuestions[n].a ) {
           color = correctFields && correctFields.includes(key) ? 'correct-color' : null;// correctFields go from answers db
-          this.submitForm.innerHTML += ` <span class="answers ${color}" ><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span><br>`;
+          this.submitForm.innerHTML += ` <div class="answers ${color}"><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</div>`;
         }
         this.submitForm.append(this.submitButton);
         

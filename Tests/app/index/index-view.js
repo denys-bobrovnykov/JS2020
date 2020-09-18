@@ -12,7 +12,7 @@ export default class IndexView{
         this.selectElement.forEach(chapter => chapter.addEventListener('change', selectChapter));
         this.chaptersList.addEventListener('click', checkBox);
 
-        this.goButton.addEventListener('click', goClick);
+        this.modeSelect.addEventListener('submit', goClick);
     }
 
 }

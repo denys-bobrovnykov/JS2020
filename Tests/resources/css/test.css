@@ -1,14 +1,32 @@
-
 .test-container {
     padding: 10px;
-    max-width: 400px;
-    max-height: 400px;
+    min-width: 100px;
+    min-height: 100px;
     border: 2px solid black;
     font-size: large;
 }
-span:hover {
-    cursor: pointer;;
+#answer-form input {
+    margin-top: 10px;
+    zoom: 1.5;
 }
+.prev-button, .next-button {
+    zoom: 1.5;
+    margin: 10px 10px;
+}
+.prev-button, .next-button, .check-button, #answer-form input:hover {
+    cursor: pointer;
+}
+.next-button {
+    float: right;
+}
+.check-button {
+    position: relative;
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    border-radius: 20px;
+}
+
 .wrong-color {
     background-color: rgba(211, 113, 83,0.7);
 }

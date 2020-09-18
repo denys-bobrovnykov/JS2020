@@ -20,9 +20,11 @@ export default class IndexControl{
         
     }
 
-    goClick() {
+    goClick(e) {
+        e.preventDefault();
         this.storeData();
         this.cleanUpStorage();
+        window.location.href = "./test.html";
     }
 
     selectChapter() {
@@ -32,7 +34,7 @@ export default class IndexControl{
     }
 
     storeData() { 
-        localStorage.setItem('modes',JSON.stringify({'mode': this.view.modeSelect.mode.value, 'randomize': this.view.modeSelect.random.value}));
+        localStorage.setItem('modes',JSON.stringify({'randomize': this.view.modeSelect.random.value}));
         localStorage.setItem('chapters',JSON.stringify(this.model.selectedChapters || ['1']));
     }
     

@@ -1,9 +1,11 @@
-
 #mode-select {
-    width: 350px;
+    min-width: 350px;
     display: grid;
     gap: 10px;
     justify-items: center;
+}
+#mode-select label, .go-button{
+    zoom: 1.5;
 }
 ol {
     display: grid;
@@ -11,7 +13,9 @@ ol {
     width: 280px;
 }
 .go-button {
+    border-radius: 20px;
     width: 50%;
+    margin-top: 15px;
 }
 
 @media only screen 

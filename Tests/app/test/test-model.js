@@ -29,7 +29,7 @@ export default class TestModel{
     this.checkedAnsw; //ticked answers array
     this.correctAnsw; //number of question in database for answer check
     this.correct; //bool oveall answer correctness 
-    this.questionTotal = 0; // total questions in the SELECT
+    this.questionLeft = 0; // total questions in the SELECT
     this.selectedQuestions = []; // SELECTed questions array
     this.wrongAnswersList = []; // wrong answers array
     this.correctAnswList = []; // correct answers array
@@ -47,7 +47,7 @@ export default class TestModel{
         this.selectedQuestions.push(obj);
       }
     }
-    this.questionTotal = this.selectedQuestions.length;
+    this.questionLeft = this.selectedQuestions.length;
   }
 
   randomise() {
@@ -89,22 +89,18 @@ export default class TestModel{
 
   selectNext() {
     // console.log(this.questionTotal);
-    if( this.questionTotal - 1 > 0){
-      this.questionTotal -= 1;
+    if( this.questionLeft - 1 > 0){
+      this.questionLeft -= 1;
       this.forDisplay += 1;
-    } else {
-      alert('The End');
     }
     // console.log(this.forDisplay);
   }
 
   selectPrev() {
     // console.log(this.questionTotal);
-    if( this.questionTotal % this.selectedQuestions.length ){
-      this.questionTotal += 1;
+    if( this.questionLeft % this.selectedQuestions.length ){
+      this.questionLeft += 1;
       this.forDisplay -= 1;
-    } else {
-      alert('The beginning');
     }
     // console.log(this.forDisplay);
   }

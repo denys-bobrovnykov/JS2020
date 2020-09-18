@@ -23,8 +23,7 @@ export default class TestControl {
             this.model.selectedQuestions = sessionData.selectedQuestions;// SELECTed questions array
             this.model.forCheck = sessionData.forCheck; //question number to check with ANSWERS db
             this.model.chapters = sessionData.chapters;
-
-
+            this.model.questionLeft = sessionData.questionLeft;
         }
 
         if ( localStorage.getItem('location') == 'main' ) {
@@ -55,7 +54,7 @@ export default class TestControl {
     }
 
     checkBox(e) {
-        if ( e.target.tagName == 'SPAN' ) {
+        if ( e.target.tagName == 'DIV' ) {
             e.target.firstElementChild.checked = 'true';
         }
     }
@@ -102,7 +101,8 @@ export default class TestControl {
             chapters: this.model.chapters,
             wrongAnswersList: this.model.wrongAnswersList, // wrong answers array
             correctAnswList: this.model.correctAnswList, // correct answers array
-            answeredList: this.model.answeredList // viewed qlready questions 
+            answeredList: this.model.answeredList, // viewed qlready questions 
+            questionLeft: this.model.questionLeft
         
         }
         localStorage.setItem('session_data', JSON.stringify(sessionData));
