@@ -15,7 +15,7 @@ export default class TestControl {
         this.model.selectChapters();
         if ( this.modes.randomize == 1) this.model.randomise();
 
-        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.questionTotal);
+        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
         console.log(this.modes);
 
     }
@@ -24,12 +24,13 @@ export default class TestControl {
         e.preventDefault();
         const options = this.view.selectAnswers();;
         this.model.check(options);
-        if (this.model.correct) {
+        this.model.updateAnsweredList();
+
+        if (this.model.correct) { // jumps to next if correct
             this.onNextClick();
         }
         console.log(this.model.checkedAnsw);
         this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
-        this.model.updateAnsweredList();
     }
 
     checkBox(e) {
@@ -40,12 +41,12 @@ export default class TestControl {
 
     onNextClick() {
         this.model.selectNext();
-        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.questionTotal);
+        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
     }
 
     onPrevClick() {
         this.model.selectPrev();
-        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.questionTotal);
+        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
     }
     
 }

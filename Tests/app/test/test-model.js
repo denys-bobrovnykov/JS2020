@@ -114,4 +114,13 @@ export default class TestModel{
     console.log('viewed', this.answeredList);
   }
 
+  getCorrectAnswers() {
+
+    if ( this.answeredList.includes(this.forDisplay) ){
+      return this.answers[this.selectedQuestions[this.forDisplay].num].split(',');
+    } else {
+      return;
+    }
+    
+  }
 }

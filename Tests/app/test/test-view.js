@@ -26,15 +26,17 @@ export default class TestView{
         this.submitForm.innerHTML = '';
     }
 
-    renderQuestion(n = forDisplay, selectedQuestions) {
+    renderQuestion(n = forDisplay, selectedQuestions, correctFields) {
         console.log(n, selectedQuestions.length);
         this.clear();
+        let color;
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
         for ( let key in selectedQuestions[n].a ) {
-          this.submitForm.innerHTML += ` <span class="answers" ><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span><br>`;
+          color = correctFields && correctFields.includes(key) ? 'correct-color' : null;// correctFields go from answers db
+          this.submitForm.innerHTML += ` <span class="answers ${color}" ><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span><br>`;
         }
-        // this.submitButton.disabled = false;
         this.submitForm.append(this.submitButton);
+        
     }
 
     selectAnswers(){
@@ -50,6 +52,5 @@ export default class TestView{
         }
         if ( correct.includes(el.id) ) el.parentElement.classList.add('correct-color');
       })
-
     }
 }
