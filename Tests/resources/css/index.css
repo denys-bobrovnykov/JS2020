@@ -7,6 +7,10 @@
 #mode-select label, .go-button{
     zoom: 1.5;
 }
+.stats-label {
+    position: relative;
+    top: -30px;
+}
 ol {
     display: grid;
     gap:10px;
