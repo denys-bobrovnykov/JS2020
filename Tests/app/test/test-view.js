@@ -1,20 +1,24 @@
 export default class TestView{
 
-    constructor(submitAnsw, checkBox, nextQ){
+    constructor(submitAnsw, checkBox, nextQ, prevQ){
 
+      //Elements select
       this.testContainer = document.querySelector('.test-container');
       this.questionText = document.querySelector('.question-text');
-      this.submitAnswer = document.querySelector('.submit-answer');
       this.answerInput = document.querySelector('.answer-input');
       this.submitForm = document.querySelector('#answer-form');
+      //Elements create
       this.submitButton = document.createElement('input');
       this.submitButton.type = 'submit';
-
+      //Buttons select
       this.nextButton = document.querySelector('.next-question');
-
+      this.prevButton = document.querySelector('.prev-button');
+      // Listeners
       this.submitForm.addEventListener('submit', submitAnsw);
       this.submitForm.addEventListener('click', checkBox);
       this.nextButton.addEventListener('click', nextQ);
+      this.prevButton.addEventListener('click', prevQ);
+
     }
 
     clear() {
@@ -23,6 +27,7 @@ export default class TestView{
     }
 
     renderQuestion(n = forDisplay, selectedQuestions) {
+        console.log(n, selectedQuestions.length);
         this.clear();
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
         for ( let key in selectedQuestions[n].a ) {

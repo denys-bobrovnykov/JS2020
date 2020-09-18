@@ -10,4 +10,5 @@ export default class IndexModel{
         this.selectedChapters = Array.from(options)
                         .reduce((acc, opt) => opt.selected ? acc.concat(opt.value) : acc,[]);
     }
+    
 }
