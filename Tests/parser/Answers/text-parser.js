@@ -13,9 +13,11 @@ function questObj(data) {
     let aNum;
     for ( let row of rows ) {
         answ = row.match(/^\d{1,4}\..+/g);
+        // answ = row.match(/^\d{1,4}\..+/g);
         if ( answ != null ) {
             aNum = parseInt(row.slice(0,4).split('').join(''));
-            let value = answ[0].slice(aNum.toString().length+1,row.length).split(' ').join('');
+            let value = answ[0].slice(aNum.toString().length+1,row.length).split(/[\s.]/).join('');
+            // let value = answ[0].slice(aNum.toString().length+1,row.length).split(' ').join('');
             if ( value.includes('-') ) {
                 console.log('yes');
                 let arr = [];

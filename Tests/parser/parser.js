@@ -14,7 +14,8 @@ function questObj(data) {
     let qNum;
     for ( let row of rows ) {
         q = row.match(/^\d{1,4}\..*[:?}]/g);
-        answ = row.match(/^\d\.\s.+[\p{L}I\d\\)]$/gu);
+        answ = row.match(/^\d\.\s.*[\p{L}I\d\\)].?$/gu);
+        // answ = row.match(/^\d\.\s.+[\p{L}I\d\\)].?$/gu);
         if ( q != null ) {
             qNum = parseInt(row.slice(0,4).split('').join(''));
             questions[qNum] = {'text': q.toString(),'a': {}};

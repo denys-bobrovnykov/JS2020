@@ -10,7 +10,7 @@
 ol {
     display: grid;
     gap:10px;
-    width: 280px;
+    min-width: 280px;
 }
 .go-button {
     border-radius: 20px;

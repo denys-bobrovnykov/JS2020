@@ -74,7 +74,7 @@ export default class TestModel{
     const answer = {'questionNum': n, 'yourAnsw': checked, 'correctAnsw': this.correctAnsw};
 
     if ( !this.answeredList.includes(this.forDisplay) ){
-      if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {
+      if ( checked == this.answers[n] ) {
         this.correct = true;
         this.correctAnswList.push(answer);
         // localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswList))

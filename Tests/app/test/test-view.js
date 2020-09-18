@@ -31,7 +31,7 @@ export default class TestView{
     }
 
     renderQuestion(n = forDisplay, selectedQuestions, correctFields) {
-        console.log(n, selectedQuestions.length);
+        // console.log(n, selectedQuestions.length);
         this.clear();
         let color;
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
@@ -48,8 +48,7 @@ export default class TestView{
     }
 
     renderResult(options, checked, correct){
-      // this.submitButton.disabled = true;
-      console.log(options);
+      // console.log(options);
       options.forEach(el => {
         if( checked.includes(el.id) && !correct.includes(el.id)) {
           el.parentElement.classList.add('wrong-color');
