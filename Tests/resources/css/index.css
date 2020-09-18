@@ -1,12 +1,14 @@
 
 #mode-select {
     width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    gap: 10px;
+    justify-items: center;
 }
-#chapters-select {
-    width: 330px;
+ol {
+    display: grid;
+    gap:10px;
+    width: 280px;
 }
 .go-button {
     width: 50%;

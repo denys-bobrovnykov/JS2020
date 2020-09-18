@@ -71,7 +71,7 @@ export default class TestModel{
     console.log('correct', this.correctAnsw);
     console.log('forDisp', this.forDisplay);
 
-    const answer = {'questionNum': n, 'yourAnsw': checked, 'correcAnsw': this.correctAnsw};
+    const answer = {'questionNum': n, 'yourAnsw': checked, 'correctAnsw': this.correctAnsw};
 
     if ( !this.answeredList.includes(this.forDisplay) ){
       if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {

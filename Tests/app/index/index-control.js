@@ -4,8 +4,17 @@ import IndexView from "./index-view.js"
 export default class IndexControl{
     constructor(){
         this.model = new IndexModel();
-        this.view = new IndexView(this.selectChapter.bind(this), this.goClick.bind(this));
+        this.view = new IndexView(this.selectChapter.bind(this), this.goClick.bind(this), this.checkBox.bind(this));
     }
+
+    checkBox(e) {
+        if ( e.target.tagName == 'LI' ) {
+            e.target.firstElementChild.checked = 'true';
+            this.model.selectOptions(this.view.selectElement);
+        }
+        
+    }
+
     goClick() {
         this.storeData();
         this.cleanUpStorage();
@@ -13,7 +22,8 @@ export default class IndexControl{
 
     selectChapter() {
         console.log('select');
-        this.model.selectOptions(this.view.selectElement.options);
+        this.model.selectOptions(this.view.selectElement);
+        // this.model.selectOptions(this.view.selectElement.options);
     }
 
     storeData() { 
