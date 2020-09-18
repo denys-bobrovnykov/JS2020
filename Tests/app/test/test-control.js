@@ -8,15 +8,36 @@ export default class TestControl {
         this.view = new TestView(this.submitAnswer.bind(this), 
                                 this.checkBox.bind(this), 
                                 this.onNextClick.bind(this),
-                                this.onPrevClick.bind(this));
+                                this.onPrevClick.bind(this),
+                                this.gotoMain.bind(this),
+                                this.saveSession.bind(this));
         this.model = new TestModel();
-        this.modes = JSON.parse(localStorage.getItem('modes'));
-        console.log(this.modes.randomize);
-        this.model.selectChapters();
-        if ( this.modes.randomize == 1) this.model.randomise();
 
+        console.log(localStorage.getItem('location'));
+
+
+        if ( localStorage.getItem('location') == 'test' ) {
+
+            const sessionData = JSON.parse(localStorage.getItem('session_data'));
+            this.model.forDisplay = sessionData.forDisplay;
+            this.model.selectedQuestions = sessionData.selectedQuestions;// SELECTed questions array
+            this.model.forCheck = sessionData.forCheck; //question number to check with ANSWERS db
+            this.model.chapters = sessionData.chapters;
+
+
+        }
+
+        if ( localStorage.getItem('location') == 'main' ) {
+
+            this.modes = JSON.parse(localStorage.getItem('modes'));
+            this.model.selectChapters();
+
+            if ( this.modes.randomize == 1) this.model.randomise();
+            localStorage.setItem('location', 'test');
+        } 
+        console.log(this.model.forDisplay);
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
-        console.log(this.modes);
+        this.saveSession();
 
     }
 
@@ -29,8 +50,8 @@ export default class TestControl {
         if (this.model.correct) { // jumps to next if correct
             this.onNextClick();
         }
-        console.log(this.model.checkedAnsw);
         this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
+        this.saveSession();
     }
 
     checkBox(e) {
@@ -42,11 +63,49 @@ export default class TestControl {
     onNextClick() {
         this.model.selectNext();
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
+        this.saveSession();
     }
 
     onPrevClick() {
         this.model.selectPrev();
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
+        this.saveSession();
+    }
+
+    gotoMain() {
+
+        localStorage.removeItem('session_data');
+        localStorage.setItem('location', 'main');
+        this.saveStats();
+    }
+
+    saveStats() {
+        let sessionsResults = JSON.parse(localStorage.getItem('session_results')) || [];
+        const sessionStats = {
+            chapters: this.model.chapters,
+            answeredList: this.model.answeredList,
+            wrongAnswersList: this.model.wrongAnswersList,
+            correctAnswList: this.model.correctAnswList,
+            date: new Date(),
+        }
+        sessionsResults.push(sessionStats);
+        localStorage.setItem('session_results', JSON.stringify(sessionsResults));
+
+    }
+
+    saveSession() {
+        const sessionData = {
+
+            forDisplay: this.model.forDisplay,
+            selectedQuestions: this.model.selectedQuestions,
+            forCheck: this.model.forCheck,
+            chapters: this.model.chapters,
+            wrongAnswersList: this.model.wrongAnswersList, // wrong answers array
+            correctAnswList: this.model.correctAnswList, // correct answers array
+            answeredList: this.model.answeredList // viewed qlready questions 
+        
+        }
+        localStorage.setItem('session_data', JSON.stringify(sessionData));
     }
     
 }

@@ -5,6 +5,11 @@ export default class IndexControl{
     constructor(){
         this.model = new IndexModel();
         this.view = new IndexView(this.selectChapter.bind(this), this.goClick.bind(this), this.checkBox.bind(this));
+        if ( localStorage.getItem('location') == 'test') {
+            window.location.href = "./test.html";
+        } else { 
+            localStorage.setItem('location', 'main');
+        }
     }
 
     checkBox(e) {

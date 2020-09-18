@@ -1,6 +1,6 @@
 export default class TestView{
 
-    constructor(submitAnsw, checkBox, nextQ, prevQ){
+    constructor(submitAnsw, checkBox, nextQ, prevQ, gotoMain, saveSession){
 
       //Elements select
       this.testContainer = document.querySelector('.test-container');
@@ -13,11 +13,14 @@ export default class TestView{
       //Buttons select
       this.nextButton = document.querySelector('.next-question');
       this.prevButton = document.querySelector('.prev-button');
+      this.homeButton = document.querySelector('.nav-home');
       // Listeners
       this.submitForm.addEventListener('submit', submitAnsw);
       this.submitForm.addEventListener('click', checkBox);
       this.nextButton.addEventListener('click', nextQ);
       this.prevButton.addEventListener('click', prevQ);
+      this.homeButton.addEventListener('click', gotoMain);
+      window.onunload = saveSession;
 
     }
 

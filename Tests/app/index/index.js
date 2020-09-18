@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 storeData(data,'questions');
                 console.log('db loaded')
-            }, rej => document.write("ERROR LOADING QUESTIONS DB"))
+            }, rej => document.body.innerHTML = "ERROR LOADING QUESTIONS DB")
             .catch(err => console.error(err));
         }
     }
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     storeData(data, 'answers');
                     console.log('db loaded')
                     loadController();
-            }, rej => document.write("ERROR LOADING ANSWERS DB"))
+            }, rej => document.body.innerHTML = "ERROR LOADING ANSWERS DB")
             .catch(err => console.error(err));
         }
     }  

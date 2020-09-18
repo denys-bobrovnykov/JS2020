@@ -64,12 +64,12 @@ export default class TestModel{
     const checked = Array.from(nodeList).reduce((acc, el) => el.checked ? acc.concat(el.value) : acc, []).join(','); 
     this.checkedAnsw=checked.split(',');// checked answers
 
-    console.log('checked', this.checkedAnsw);
+    // console.log('checked', this.checkedAnsw);
 
     this.correctAnsw.push(...this.answers[n].split(','));// correct answers
 
-    console.log('correct', this.correctAnsw);
-    console.log('forDisp', this.forDisplay);
+    // console.log('correct', this.correctAnsw);
+    // console.log('forDisp', this.forDisplay);
 
     const answer = {'questionNum': n, 'yourAnsw': checked, 'correctAnsw': this.correctAnsw};
 
@@ -77,36 +77,36 @@ export default class TestModel{
       if ( checked == this.answers[n] || checked + '.' == this.answers[n]) {
         this.correct = true;
         this.correctAnswList.push(answer);
-        localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswList))
+        // localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswList))
       } else {
         this.correct = false;
         this.wrongAnswersList.push(answer);
-        localStorage.setItem('wrongAnswers', JSON.stringify(this.wrongAnswersList));
-        console.log(this.wrongAnswers);
+        // localStorage.setItem('wrongAnswers', JSON.stringify(this.wrongAnswersList));
+        // console.log(this.wrongAnswers);
       }
     }
   }
 
   selectNext() {
-    console.log(this.questionTotal);
+    // console.log(this.questionTotal);
     if( this.questionTotal - 1 > 0){
       this.questionTotal -= 1;
       this.forDisplay += 1;
     } else {
       alert('The End');
     }
-    console.log(this.forDisplay);
+    // console.log(this.forDisplay);
   }
 
   selectPrev() {
-    console.log(this.questionTotal);
+    // console.log(this.questionTotal);
     if( this.questionTotal % this.selectedQuestions.length ){
       this.questionTotal += 1;
       this.forDisplay -= 1;
     } else {
       alert('The beginning');
     }
-    console.log(this.forDisplay);
+    // console.log(this.forDisplay);
   }
 
   updateAnsweredList() {
@@ -121,6 +121,6 @@ export default class TestModel{
     } else {
       return;
     }
-    
+
   }
 }
