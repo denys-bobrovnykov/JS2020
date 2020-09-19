@@ -1,7 +1,7 @@
 const fs = require('fs');
  
 
-fs.readFile('questions.txt', (err, data) => {
+fs.readFile('test.txt', (err, data) => {
     if (err) console.log(err);
     return questObj(data.toString());
 });

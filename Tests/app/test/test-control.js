@@ -29,7 +29,7 @@ export default class TestControl {
         if ( localStorage.getItem('location') == 'main' ) {
 
             this.modes = JSON.parse(localStorage.getItem('modes'));
-            this.model.selectChapters();
+            // this.model.selectChapters();
 
             if ( this.modes.randomize == 1) this.model.randomise();
             localStorage.setItem('location', 'test');
@@ -80,14 +80,18 @@ export default class TestControl {
 
     saveStats() {
         let sessionsResults = JSON.parse(localStorage.getItem('session_results')) || [];
+        const dateNow = new Date();
+
         const sessionStats = {
             chapters: this.model.chapters,
             answeredList: this.model.answeredList,
             wrongAnswersList: this.model.wrongAnswersList,
             correctAnswList: this.model.correctAnswList,
-            date: new Date(),
+            start: this.model.start.toLocaleString(),
+            finish: dateNow.toLocaleString(),
         }
         sessionsResults.push(sessionStats);
+        if (sessionsResults.length > 5) sessionsResults.splice(0,1);
         localStorage.setItem('session_results', JSON.stringify(sessionsResults));
 
     }

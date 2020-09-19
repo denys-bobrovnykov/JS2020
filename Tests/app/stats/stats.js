@@ -1,3 +1,5 @@
+import StatsControl from './stats-control.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.stats-container').innerHTML = localStorage.getItem('session_results');
+    const stats = new StatsControl();
 })
