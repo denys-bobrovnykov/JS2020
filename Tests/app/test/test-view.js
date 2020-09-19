@@ -7,6 +7,7 @@ export default class TestView{
       this.questionText = document.querySelector('.question-text');
       this.answerInput = document.querySelector('.answer-input');
       this.submitForm = document.querySelector('#answer-form');
+      this.controlsContainer= document.querySelector('.test-controls');
       //Elements create
       this.submitButton = document.createElement('input');
       this.submitButton.type = 'submit';
@@ -23,6 +24,7 @@ export default class TestView{
       this.homeButton.addEventListener('click', gotoMain);
       window.onunload = saveSession;
 
+      window.addEventListener('scroll', this.stickControls.bind(this));
     }
 
     clear() {
@@ -55,12 +57,22 @@ export default class TestView{
     }
 
     renderResult(options, checked, correct){
-      // console.log(options);
       options.forEach(el => {
         if( checked.includes(el.id) && !correct.includes(el.id)) {
           el.parentElement.classList.add('wrong-color');
         }
-        if ( correct.includes(el.id) ) el.parentElement.classList.add('correct-color');
+        if ( correct.includes(el.id) ) {
+          el.parentElement.classList.add('correct-color');
+          el.checked = true;
+        }
       })
+    }
+    stickControls(){
+      if(this.nextButton.getBoundingClientRect().top < 0) {
+        this.controlsContainer.classList.add('stick');
+      } 
+      if( this.testContainer.getBoundingClientRect().top >= this.controlsContainer.offsetHeight ) {
+        this.controlsContainer.classList.remove('stick');      
+      }
     }
 }

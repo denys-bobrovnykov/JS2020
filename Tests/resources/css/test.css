@@ -1,23 +1,38 @@
 .test-container {
-    padding: 10px;
     min-width: 100px;
     min-height: 100px;
     border: 2px solid black;
-    font-size: large;
+    font-size: 25px;
+    margin-top: 70px;
+    padding: 10px;
 }
 #answer-form input {
     margin-top: 10px;
+    margin-bottom: 10px;
     zoom: 1.5;
+}
+.test-controls{
+    position: absolute;
+    top: 130px;
+    width: 100%;
 }
 .prev-button, .next-button {
     zoom: 1.5;
-    margin: 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 .prev-button, .next-button, .check-button, #answer-form input:hover {
     cursor: pointer;
 }
 .next-button {
     float: right;
+    margin-right: 20px;
+}
+.stick{
+    position: fixed;
+    top: 0;
+    /* left: 10px; */
+    /* right: 0; */
+    /* margin-right: 10px; */
 }
 .check-button {
     position: relative;
