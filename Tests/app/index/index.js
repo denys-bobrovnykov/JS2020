@@ -2,9 +2,9 @@ import IndexControl from './index-control.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     //Remove db from local storage
-    localStorage.removeItem('questions');
-    localStorage.removeItem('answers');
-    localStorage.removeItem('chaptersRanges');
+    // localStorage.removeItem('questions');
+    // localStorage.removeItem('answers');
+    // localStorage.removeItem('chaptersRanges');
 
     function loadQuestions(){
         console.log()
