@@ -46,9 +46,9 @@ export default class TestControl {
         this.model.check(options);
         this.model.updateAnsweredList();
 
-        if (this.model.correct) { // jumps to next if correct
-            this.onNextClick();
-        }
+        // if (this.model.correct) { // jumps to next if correct
+        //     this.onNextClick();
+        // }
         this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
         this.saveSession();
     }

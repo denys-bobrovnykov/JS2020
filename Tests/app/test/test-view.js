@@ -24,7 +24,7 @@ export default class TestView{
       this.homeButton.addEventListener('click', gotoMain);
       window.onunload = saveSession;
 
-      window.addEventListener('scroll', this.stickControls.bind(this));
+      // window.addEventListener('scroll', this.stickControls.bind(this));
     }
 
     clear() {
