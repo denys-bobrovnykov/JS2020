@@ -18,12 +18,12 @@ export default class StatsView{
                 count += chaptersRanges[key][1] - chaptersRanges[key][0];
             }
             this.container.innerHTML += `<div>
-                                            <p>Time started: ${item.start}</p>
-                                            <p>Time finished: ${item.finish}</p>
-                                            <p>Chapters selected: ${item.chapters.join(',')}</p>
-                                            <p>Answered questions: ${item.answeredList.length}</p>
-                                            <p>Total questions in selected chapters: ${count}</p>
-                                            <p>Result of session: ${isNaN(result) ? 0 : result}%</p>
+                                            <p>Time started(Початок): ${item.start}</p>
+                                            <p>Time finished(Кінець): ${item.finish}</p>
+                                            <p>Chapters selected(Розділи): ${item.chapters.join(',')}</p>
+                                            <p>Answered questions(Перевірені питання): ${item.answeredList.length}</p>
+                                            <p>Total questions in selected chapters(Усього питань у роздлах): ${count}</p>
+                                            <p>Result of session(Результат): ${isNaN(result) ? 0 : result}%</p>
                                         </div>
                                         <hr>`;
         }

@@ -11,7 +11,7 @@ export default class TestView{
       //Elements create
       this.submitButton = document.createElement('button');
       this.submitButton.type = 'submit';
-      this.submitButton.innerHTML = 'Submit';
+      this.submitButton.innerHTML = 'Перевірити';
       this.submitButton.classList.add('check-button');
       //Buttons select
       this.nextButton = document.querySelector('.next-button');
