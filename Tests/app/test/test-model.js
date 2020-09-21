@@ -65,6 +65,7 @@ export default class TestModel{
   selectChapters() {
     for ( let j of this.chapters) {
       for ( let k = this.chaptersRanges[j][0]; k <= this.chaptersRanges[j][1]; k++ ) {
+        console.log(this.chaptersRanges[j][1]);
         const obj = {num: k, text: this.questions[k].text, a: this.questions[k].a};
         this.selectedQuestions.push(obj);
       }

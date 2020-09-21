@@ -1,7 +1,7 @@
 const fs = require('fs');
  
 
-fs.readFile('test.txt', (err, data) => {
+fs.readFile('questions.txt', (err, data) => {
     if (err) console.log(err);
     return questObj(data.toString());
 });
@@ -21,7 +21,7 @@ function questObj(data) {
             questions[qNum] = {'text': q.toString(),'a': {}};
 
         }
-        if ( answ != null ) {
+        if ( answ != null && q == null) {
             questions[qNum]['a'][answ[0][0]] = answ[0];
             console.log(qNum);
             console.log(answ);
