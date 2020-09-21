@@ -9,7 +9,7 @@ export default class TestModel{
     this.chaptersRanges = JSON.parse(localStorage.getItem('chaptersRanges'));
     this.questions = JSON.parse(localStorage.getItem('questions'));
     // Set initial state variables
-    this.answeredList = []; // viewed qlready questions 
+    this.answeredList = []; // viewed already questions 
     this.checkedAnsw; //ticked answers array
     this.correctAnsw; //number of question in database for answer check
     this.correctAnswList = []; // correct answers array

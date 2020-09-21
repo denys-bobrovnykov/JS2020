@@ -20,17 +20,35 @@ export default class StatsView{
             for(let key of item.chapters){
                 count += chaptersRanges[key][1] - chaptersRanges[key][0];
             }
-            this.container.innerHTML += `<div>
-                                            <p>Time started(Початок): ${item.start}</p>
-                                            <p>Time finished(Кінець): ${item.finish}</p>
-                                            <p>Chapters selected(Розділи): ${item.chapters.join(',')}</p>
-                                            <p>Answered questions(Перевірені питання): ${item.answeredList.length}</p>
-                                            <p>Total questions in selected chapters(Усього питань у роздлах): ${count}</p>
-                                            <p>Result of session(Результат): ${isNaN(result) ? 0 : result}%</p>
-                                        </div>
+            this.container.innerHTML += `<table class="result">
+                                            <tr>
+                                                <th>Початок</th>
+                                                <td>${item.start}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Кінець</th>
+                                                <td>${item.finish}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Розділи</th>
+                                                <td>${item.chapters.join(',')}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Усього питань у розділх</th>
+                                                <td>${count}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Відповідей</th>
+                                                <td>${item.answeredList.length}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Результат</th>
+                                                <td>${isNaN(result) ? 0 : result}%</td>
+                                            </tr>
+                                        </table>
                                         <hr>`;
 
         }
-        
+
     }
 }

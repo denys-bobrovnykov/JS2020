@@ -5,6 +5,7 @@ export default class TestView{
       //Elements select
       this.answerInput = document.querySelector('.answer-input');
       this.controlsContainer= document.querySelector('.test-controls');
+      this.progressView = document.querySelector('.prog-data');
       this.questionText = document.querySelector('.question-text');
       this.submitForm = document.querySelector('#answer-form');
       this.testContainer = document.querySelector('.test-container');
@@ -33,6 +34,15 @@ export default class TestView{
         this.submitForm.innerHTML = '';
     }
 
+    renderProgress(answeredList, questionLeft, wrongAnswers){
+
+        this.progressView.innerHTML = `Всього питань: ${questionLeft} , Переглянуто питань: ${answeredList}, Помилок: ${wrongAnswers}`;
+            //       Всього питань: questionLeft
+            // Переглянуто питань: answeredList
+            // Помилок: wrongAnswers
+      
+    }
+
     renderQuestion(n = forDisplay, selectedQuestions, correctFields) {
 
         this.clear();
@@ -59,10 +69,18 @@ export default class TestView{
 
     renderResult(options, checked, correct){
       options.forEach(el => {
-        if( checked.includes(el.id) && !correct.includes(el.id)) {
+        if( checked.includes(el.id) && !correct.includes(el.id) ) {
           el.parentElement.classList.add('wrong-color');
         }
-        if ( correct.includes(el.id) ) {
+        if ( correct.includes(el.id) && !checked.includes(el.id) && correct.length > 1 ) {
+          el.parentElement.classList.add('wrong-color');
+          el.checked = true;
+        }
+        if ( correct.includes(el.id) && !checked.includes(el.id) && correct.length ==1 ) {
+          el.parentElement.classList.add('correct-color');
+          el.checked = true;
+        }
+        if ( correct.includes(el.id) && checked.includes(el.id) ) {
           el.parentElement.classList.add('correct-color');
           el.checked = true;
         }
@@ -73,7 +91,6 @@ export default class TestView{
       return document.querySelectorAll('.options');
     }
 
-    
     stickControls(){// switched off 
       if(this.nextButton.getBoundingClientRect().top < 0) {
         this.controlsContainer.classList.add('stick');

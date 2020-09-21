@@ -37,26 +37,27 @@ export default class TestControl {
             if ( this.modes.randomize == 1) this.model.randomise();
             localStorage.setItem('location', 'test');
         } 
-        console.log(this.model.forDisplay);
+        this.view.renderProgress(this.model.answeredList.length, this.model.selectedQuestions.length, this.model.wrongAnswersList.length);
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
         this.saveSession();
 
     }
 
-    submitAnswer(e) {
-        e.preventDefault();
-        const options = this.view.selectAnswers();;
-        this.model.check(options);
-        this.model.updateAnsweredList();
+    applyHistory(){
 
-        // if (this.model.correct) { // jumps to next if correct
-        //     this.onNextClick();
-        // }
-        this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
-        this.saveSession();
+        if ( this.model.answeredList.includes(this.model.forDisplay) ) {
+            //Find in correct or wrong answers
+            const wasWrong = this.model.wrongAnswersList.find(el => el.questionNum == this.model.selectedQuestions[this.model.forDisplay].num);
+            const wasCorrect = this.model.correctAnswList.find(el => el.questionNum == this.model.selectedQuestions[this.model.forDisplay].num);
+            const forRender = wasWrong || wasCorrect;// Assign found data for view
+            const options = this.view.selectAnswers();// Tell view to select answers elements 
+            this.view.renderResult(options, forRender.yourAnsw.split(','), forRender.correctAnsw);
+        }
+
     }
 
     checkBox(e) {
+
         if ( e.target.className == 'answer' ) {
             e.target.firstElementChild.checked = e.target.firstElementChild.checked ? false : true;
         }
@@ -73,13 +74,15 @@ export default class TestControl {
 
     onNextClick() {
         this.model.selectNext();
-        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
+        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
+        this.applyHistory();
         this.saveSession();
     }
 
     onPrevClick() {
         this.model.selectPrev();
-        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
+        this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
+        this.applyHistory();
         this.saveSession();
     }
 
@@ -117,6 +120,22 @@ export default class TestControl {
         
         }
         localStorage.setItem('session_data', JSON.stringify(sessionData));
+    }
+
+    submitAnswer(e) {
+
+        e.preventDefault();
+        const options = this.view.selectAnswers();
+        this.model.check(options);
+        this.model.updateAnsweredList();
+
+        // if (this.model.correct) { // jumps to next if correct
+        //     this.onNextClick();
+        // }
+        this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
+        this.view.renderProgress(this.model.answeredList.length, this.model.selectedQuestions.length, this.model.wrongAnswersList.length);
+        this.saveSession();
+
     }
     
 }
