@@ -51,8 +51,8 @@ export default class TestView{
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
 
         for ( let key in selectedQuestions[n].a ) {
-          this.submitForm.innerHTML += ` <div class="answer">
-                                            <input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}
+          this.submitForm.innerHTML += ` <div class="answer-container">
+                                            <span class="answer-container_clickable"><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span>
                                         </div>`;
         }
 
@@ -73,7 +73,7 @@ export default class TestView{
           el.checked = false;
         }
         if ( !checked.includes(el.id) && correct.includes(el.id) && correct.length > 1 ) {
-          el.parentElement.classList.add('wrong-color');
+          el.classList.add('wrong-color');
           el.checked = true;
         }
         if ( correct.includes(el.id) && !checked.includes(el.id) ) {
