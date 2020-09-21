@@ -41,13 +41,13 @@ export default class TestView{
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
         for ( let key in selectedQuestions[n].a ) {
           if (correctFields && correctFields.includes(key)){
-            color = 'correct-color';
+            color = ' ' + 'correct-color';
             checked = 'checked';
           } else {
             color = '';
             checked = '';
           }// correctFields go from answers db
-          this.submitForm.innerHTML += ` <div class="answers ${color}"><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" ${checked}/>${selectedQuestions[n].a[key]}</div>`;
+          this.submitForm.innerHTML += ` <div class="answer${color}"><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" ${checked}/>${selectedQuestions[n].a[key]}</div>`;
         }
         this.submitForm.append(this.submitButton);
         
