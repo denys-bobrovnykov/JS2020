@@ -15,7 +15,7 @@ ol {
     display: grid;
     gap:10px;
     min-width: 280px;
-    font-family: DIN Condensed;
+    font-family: Georgia-bold;
 }
 .go-button {
     border-radius: 20px;
