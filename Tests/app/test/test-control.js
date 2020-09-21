@@ -39,6 +39,7 @@ export default class TestControl {
         } 
         this.view.renderProgress(this.model.answeredList.length, this.model.selectedQuestions.length, this.model.wrongAnswersList.length);
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
+        this.applyHistory();
         this.saveSession();
 
     }
@@ -125,16 +126,18 @@ export default class TestControl {
     submitAnswer(e) {
 
         e.preventDefault();
-        const options = this.view.selectAnswers();
-        this.model.check(options);
-        this.model.updateAnsweredList();
-
-        // if (this.model.correct) { // jumps to next if correct
-        //     this.onNextClick();
-        // }
-        this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
-        this.view.renderProgress(this.model.answeredList.length, this.model.selectedQuestions.length, this.model.wrongAnswersList.length);
-        this.saveSession();
+        if ( !this.model.answeredList.includes(this.model.forDisplay)) {
+            const options = this.view.selectAnswers();
+            this.model.check(options);
+            this.model.updateAnsweredList();
+    
+            // if (this.model.correct) { // jumps to next if correct
+            //     this.onNextClick();
+            // }
+            this.view.renderResult(options, this.model.checkedAnsw, this.model.correctAnsw);
+            this.view.renderProgress(this.model.answeredList.length, this.model.selectedQuestions.length, this.model.wrongAnswersList.length);
+            this.saveSession();
+        }
 
     }
     

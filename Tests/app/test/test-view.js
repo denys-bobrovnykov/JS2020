@@ -43,23 +43,16 @@ export default class TestView{
       
     }
 
-    renderQuestion(n = forDisplay, selectedQuestions, correctFields) {
+    renderQuestion(n = forDisplay, selectedQuestions, checked) {
 
         this.clear();
         let color;
-        let checked;
+        let prop;
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
 
         for ( let key in selectedQuestions[n].a ) {
-          if (correctFields && correctFields.includes(key)){
-            color = ' ' + 'correct-color';// adds modificator to answer <div> class
-            checked = 'checked';
-          } else {
-            color = '';
-            checked = '';
-          }
-          this.submitForm.innerHTML += ` <div class="answer${color}">
-                                            <input type="checkbox" value="${key}" id="${key}" name="answer" class="options" ${checked}/>${selectedQuestions[n].a[key]}
+          this.submitForm.innerHTML += ` <div class="answer">
+                                            <input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}
                                         </div>`;
         }
 
@@ -68,23 +61,27 @@ export default class TestView{
     }
 
     renderResult(options, checked, correct){
+
       options.forEach(el => {
+        if ( checked.includes(el.id) ) el.checked = true;
+      })
+
+      options.forEach(el => {
+
         if( checked.includes(el.id) && !correct.includes(el.id) ) {
           el.parentElement.classList.add('wrong-color');
+          el.checked = false;
         }
-        if ( correct.includes(el.id) && !checked.includes(el.id) && correct.length > 1 ) {
-          el.parentElement.classList.add('wrong-color');
-          el.checked = true;
-        }
-        if ( correct.includes(el.id) && !checked.includes(el.id) && correct.length ==1 ) {
-          el.parentElement.classList.add('correct-color');
+        if ( correct.includes(el.id) && !checked.includes(el.id) ) {
+          el.parentElement.classList.add('hint-color');
           el.checked = true;
         }
         if ( correct.includes(el.id) && checked.includes(el.id) ) {
           el.parentElement.classList.add('correct-color');
-          el.checked = true;
         }
+
       })
+      
     }
 
     selectAnswers(){

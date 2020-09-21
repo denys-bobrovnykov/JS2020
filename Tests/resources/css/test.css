@@ -47,6 +47,9 @@
 .wrong-color {
     background-color: rgba(211, 113, 83,0.7);
 }
+.hint-color {
+    background-color: yellow;
+}
 .correct-color {
     background-color: rgba(125, 189, 125,0.7);
 }

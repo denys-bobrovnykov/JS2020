@@ -31,26 +31,16 @@ export default class TestModel{
     this.correct = false;
     const checked = Array.from(nodeList).reduce((acc, el) => el.checked ? acc.concat(el.value) : acc, []).join(','); 
     this.checkedAnsw=checked.split(',');// checked answers
-
-    // console.log('checked', this.checkedAnsw);
-
     this.correctAnsw.push(...this.answers[n].split(','));// correct answers
-
-    // console.log('correct', this.correctAnsw);
-    // console.log('forDisp', this.forDisplay);
-
     const answer = {'questionNum': n, 'yourAnsw': checked, 'correctAnsw': this.correctAnsw};
 
     if ( !this.answeredList.includes(this.forDisplay) ){
       if ( checked == this.answers[n] ) {
         this.correct = true;
         this.correctAnswList.push(answer);
-        // localStorage.setItem('correctAnswers', JSON.stringify(this.correctAnswList))
       } else {
         this.correct = false;
         this.wrongAnswersList.push(answer);
-        // localStorage.setItem('wrongAnswers', JSON.stringify(this.wrongAnswersList));
-        // console.log(this.wrongAnswers);
       }
     }
   }
