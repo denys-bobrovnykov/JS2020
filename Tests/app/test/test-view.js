@@ -68,9 +68,13 @@ export default class TestView{
 
       options.forEach(el => {
 
-        if( checked.includes(el.id) && !correct.includes(el.id) ) {
+        if ( checked.includes(el.id) && !correct.includes(el.id) ) {
           el.parentElement.classList.add('wrong-color');
           el.checked = false;
+        }
+        if ( !checked.includes(el.id) && correct.includes(el.id) && correct.length > 1 ) {
+          el.parentElement.classList.add('wrong-color');
+          el.checked = true;
         }
         if ( correct.includes(el.id) && !checked.includes(el.id) ) {
           el.parentElement.classList.add('hint-color');

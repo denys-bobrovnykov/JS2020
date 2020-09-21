@@ -15,7 +15,7 @@ export default class IndexControl{
 
     checkBox(e) {
         if ( e.target.tagName == 'LI' ) {
-            e.target.firstElementChild.checked = 'true';
+            e.target.firstElementChild.checked = e.target.firstElementChild.checked ? false : true;
             this.model.selectOptions(this.view.selectElement);
         }
         
