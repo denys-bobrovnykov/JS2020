@@ -40,6 +40,8 @@ export default class IndexControl{
     storeData() { 
         localStorage.setItem('modes',JSON.stringify({'randomize': this.view.modeSelect.random.value}));
         localStorage.setItem('chapters',JSON.stringify(this.model.selectedChapters || ['1']));
+        const timeStart  = new Date();
+        localStorage.setItem('time_start', timeStart.toLocaleString());
     }
     
     cleanUpStorage() {

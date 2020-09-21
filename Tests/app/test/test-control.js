@@ -24,6 +24,9 @@ export default class TestControl {
             this.model.forCheck = sessionData.forCheck; //question number to check with ANSWERS db
             this.model.chapters = sessionData.chapters;
             this.model.questionLeft = sessionData.questionLeft;
+            this.model.wrongAnswersList = sessionData.wrongAnswersList; // wrong answers array
+            this.model.correctAnswList = sessionData.correctAnswList; // correct answers array
+            this.model.answeredList = sessionData.answeredList; // viewed qlready questions 
         }
 
         if ( localStorage.getItem('location') == 'main' ) {
@@ -90,12 +93,13 @@ export default class TestControl {
             answeredList: this.model.answeredList,
             wrongAnswersList: this.model.wrongAnswersList,
             correctAnswList: this.model.correctAnswList,
-            start: this.model.start.toLocaleString(),
+            start: localStorage.getItem('time_start'),
             finish: dateNow.toLocaleString(),
         }
         sessionsResults.unshift(sessionStats);
         if (sessionsResults.length > 5) sessionsResults.pop();
         localStorage.setItem('session_results', JSON.stringify(sessionsResults));
+        localStorage.removeItem('time_start');
 
     }
 

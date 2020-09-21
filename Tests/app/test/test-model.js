@@ -21,7 +21,6 @@ export default class TestModel{
 
     this.view = new TestView();
     this.selectChapters(); // select questions in the SELECT
-    this.start = new Date();
   }
 
   selectChapters() {
