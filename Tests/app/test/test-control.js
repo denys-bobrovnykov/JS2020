@@ -90,7 +90,7 @@ export default class TestControl {
             start: this.model.start.toLocaleString(),
             finish: dateNow.toLocaleString(),
         }
-        sessionsResults.push(sessionStats);
+        sessionsResults.unshift(sessionStats);
         if (sessionsResults.length > 5) sessionsResults.splice(0,1);
         localStorage.setItem('session_results', JSON.stringify(sessionsResults));
 

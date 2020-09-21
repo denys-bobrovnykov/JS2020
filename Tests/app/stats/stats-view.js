@@ -4,7 +4,6 @@ export default class StatsView{
     }
     renderList(data){
         this.container.innerHTML = '';
-        data.reverse();
         for (let i = 0, last = data.length; i < last; i++) {
             const item = data[i];
             const chaptersRanges = JSON.parse(localStorage.getItem('chaptersRanges'));
