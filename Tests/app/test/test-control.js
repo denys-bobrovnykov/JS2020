@@ -59,7 +59,7 @@ export default class TestControl {
 
     checkBox(e) {
 
-        if ( e.target.className == 'answer' ) {
+        if ( e.target.className == 'answer-container_clickable' ) {
             e.target.firstElementChild.checked = e.target.firstElementChild.checked ? false : true;
         }
     }
