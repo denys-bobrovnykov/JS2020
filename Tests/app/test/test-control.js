@@ -94,7 +94,7 @@ export default class TestControl {
             finish: dateNow.toLocaleString(),
         }
         sessionsResults.unshift(sessionStats);
-        if (sessionsResults.length > 5) sessionsResults.splice(0,1);
+        if (sessionsResults.length > 5) sessionsResults.pop();
         localStorage.setItem('session_results', JSON.stringify(sessionsResults));
 
     }
