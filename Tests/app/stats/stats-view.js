@@ -1,6 +1,11 @@
 export default class StatsView{
-    constructor(){
+    constructor(gotoMain){
+        //View container
         this.container = document.querySelector('.stats-container');
+        //Buttons
+        this.gotoMain = document.querySelector('.nav-home');
+        //Listeners
+        this.gotoMain.addEventListener('click', gotoMain);
     }
     renderList(data){
         this.container.innerHTML = '';

@@ -59,6 +59,15 @@ export default class TestControl {
         }
     }
 
+    gotoMain() {
+
+        localStorage.removeItem('session_data');
+        localStorage.setItem('location', 'main');
+        this.saveStats();
+        window.location.href = './index.html';
+    }
+
+
     onNextClick() {
         this.model.selectNext();
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions, this.model.getCorrectAnswers());
@@ -71,12 +80,6 @@ export default class TestControl {
         this.saveSession();
     }
 
-    gotoMain() {
-
-        localStorage.removeItem('session_data');
-        localStorage.setItem('location', 'main');
-        this.saveStats();
-    }
 
     saveStats() {
         let sessionsResults = JSON.parse(localStorage.getItem('session_results')) || [];

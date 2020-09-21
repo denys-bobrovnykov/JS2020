@@ -9,8 +9,9 @@ export default class TestView{
       this.submitForm = document.querySelector('#answer-form');
       this.controlsContainer= document.querySelector('.test-controls');
       //Elements create
-      this.submitButton = document.createElement('input');
+      this.submitButton = document.createElement('button');
       this.submitButton.type = 'submit';
+      this.submitButton.innerHTML = 'Submit';
       this.submitButton.classList.add('check-button');
       //Buttons select
       this.nextButton = document.querySelector('.next-button');

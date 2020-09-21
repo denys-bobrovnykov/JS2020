@@ -4,7 +4,7 @@ import IndexView from "./index-view.js"
 export default class IndexControl{
     constructor(){
         this.model = new IndexModel();
-        this.view = new IndexView(this.selectChapter.bind(this), this.goClick.bind(this), this.checkBox.bind(this));
+        this.view = new IndexView(this.gotoStats.bind(this), this.selectChapter.bind(this), this.goClick.bind(this), this.checkBox.bind(this));
         if ( localStorage.getItem('location') == 'test') {
             window.location.href = "./test.html";
         } else { 
@@ -25,6 +25,10 @@ export default class IndexControl{
         this.storeData();
         this.cleanUpStorage();
         window.location.href = "./test.html";
+    }
+
+    gotoStats(){
+        window.location.href = './statistic.html';
     }
 
     selectChapter() {

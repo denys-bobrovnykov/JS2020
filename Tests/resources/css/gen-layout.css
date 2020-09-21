@@ -6,4 +6,5 @@ main {
 }
 button {
     zoom: 1.5;
+    border-radius: 20px;
 }
