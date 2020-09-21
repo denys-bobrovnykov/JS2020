@@ -1,12 +1,19 @@
 header h1 {
     text-align: center;
+    background-color: rgba(72, 209, 205, 0.527);
 }
 main {
     margin-bottom: 100px;
 }
+h2 {
+    width: 100%;
+    background-color: olive;
+    color: white;
+}
 button {
     zoom: 2;
     border-radius: 20px;
+    background-color: rgba(205, 214, 223, 0.548);
 }
 
 @media only screen 
@@ -14,5 +21,4 @@ button {
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) { 
-
 }
