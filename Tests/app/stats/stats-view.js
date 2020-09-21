@@ -13,10 +13,10 @@ export default class StatsView{
             const item = data[i];
             const chaptersRanges = JSON.parse(localStorage.getItem('chaptersRanges'));
             const result = (item.correctAnswList.length/item.answeredList.length * 100).toFixed(0);
-            // let count = 0;
-            // for(let key of item.chapters){
-            //     count += chaptersRanges[key][1] - chaptersRanges[key][0];
-            // }
+            let count = 0;
+            for(let key of item.chapters){
+                count += chaptersRanges[key][1] - chaptersRanges[key][0];
+            }
             this.container.innerHTML += `<div>
                                             <p>Time started: ${item.start}</p>
                                             <p>Time finished: ${item.finish}</p>
