@@ -58,12 +58,7 @@ export default class TestControl {
 
     checkBox(e) {
         if ( e.target.tagName == 'DIV' ) {
-            if (e.target.firstElementChild.checked) {
-                console.log(e.target.firstElementChild.checked);
-                e.target.firstElementChild.checked = false;
-            } else {
-                e.target.firstElementChild.checked = 'true';
-            }
+            e.target.firstElementChild.checked = e.target.firstElementChild.checked ? false : true;
         }
     }
 
