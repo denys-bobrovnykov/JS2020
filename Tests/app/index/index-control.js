@@ -2,6 +2,7 @@ import IndexModel from "./index-model.js";
 import IndexView from "./index-view.js"
 
 export default class IndexControl{
+    
     constructor(){
         this.model = new IndexModel();
         this.view = new IndexView(this.gotoStats.bind(this), this.selectChapter.bind(this), this.goClick.bind(this), this.checkBox.bind(this));

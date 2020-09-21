@@ -3,41 +3,26 @@ import TestView from "./test-view.js";
 export default class TestModel{
 
   constructor(){
-
-    this.chaptersRanges = JSON.parse(localStorage.getItem('chaptersRanges'));
-    this.questions = JSON.parse(localStorage.getItem('questions'));
+    // Get local storage variables
     this.answers = JSON.parse(localStorage.getItem('answers'));
     this.chapters = JSON.parse(localStorage.getItem('chapters'));
-    this.forDisplay = 0; //question index in SELECTed questions array to display
-    this.forCheck; //question number to check with ANSWERS db
+    this.chaptersRanges = JSON.parse(localStorage.getItem('chaptersRanges'));
+    this.questions = JSON.parse(localStorage.getItem('questions'));
+    // Set initial state variables
+    this.answeredList = []; // viewed qlready questions 
     this.checkedAnsw; //ticked answers array
     this.correctAnsw; //number of question in database for answer check
+    this.correctAnswList = []; // correct answers array
     this.correct; //bool oveall answer correctness 
+    this.forCheck; //question number to check with ANSWERS db
+    this.forDisplay = 0; //question index in SELECTed questions array to display
     this.questionLeft = 0; // total questions in the SELECT
     this.selectedQuestions = []; // SELECTed questions array
     this.wrongAnswersList = []; // wrong answers array
-    this.correctAnswList = []; // correct answers array
-    this.answeredList = []; // viewed qlready questions 
-
+    // Init TestView
     this.view = new TestView();
+    // Select questions for display
     this.selectChapters(); // select questions in the SELECT
-  }
-
-  selectChapters() {
-    for ( let j of this.chapters) {
-      for ( let k = this.chaptersRanges[j][0]; k <= this.chaptersRanges[j][1]; k++ ) {
-        const obj = {num: k, text: this.questions[k].text, a: this.questions[k].a};
-        this.selectedQuestions.push(obj);
-      }
-    }
-    this.questionLeft = this.selectedQuestions.length;
-  }
-
-  randomise() {
-    for ( let i = 0; i < this.selectedQuestions.length; i++ ) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [this.selectedQuestions[i], this.selectedQuestions[j]] = [this.selectedQuestions[j],this.selectedQuestions[i]];
-    }
   }
 
   check(nodeList, n = this.selectedQuestions[this.forDisplay].num) {
@@ -70,29 +55,6 @@ export default class TestModel{
     }
   }
 
-  selectNext() {
-    // console.log(this.questionTotal);
-    if( this.questionLeft - 1 > 0){
-      this.questionLeft -= 1;
-      this.forDisplay += 1;
-    }
-    // console.log(this.forDisplay);
-  }
-
-  selectPrev() {
-    // console.log(this.questionTotal);
-    if( this.questionLeft % this.selectedQuestions.length ){
-      this.questionLeft += 1;
-      this.forDisplay -= 1;
-    }
-    // console.log(this.forDisplay);
-  }
-
-  updateAnsweredList() {
-    if ( !this.answeredList.includes(this.forDisplay) )this.answeredList.push(this.forDisplay);
-    console.log('viewed', this.answeredList);
-  }
-
   getCorrectAnswers() {
 
     if ( this.answeredList.includes(this.forDisplay) ){
@@ -102,4 +64,47 @@ export default class TestModel{
     }
 
   }
+
+  randomise() {
+    for ( let i = 0; i < this.selectedQuestions.length; i++ ) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [this.selectedQuestions[i], this.selectedQuestions[j]] = [this.selectedQuestions[j],this.selectedQuestions[i]];
+    }
+  }
+
+  selectChapters() {
+    for ( let j of this.chapters) {
+      for ( let k = this.chaptersRanges[j][0]; k <= this.chaptersRanges[j][1]; k++ ) {
+        const obj = {num: k, text: this.questions[k].text, a: this.questions[k].a};
+        this.selectedQuestions.push(obj);
+      }
+    }
+    this.questionLeft = this.selectedQuestions.length;
+  }
+
+  selectNext() {
+    if ( this.questionLeft - 1 > 0 ) {
+
+      this.questionLeft -= 1;
+      this.forDisplay += 1;
+
+    }
+  }
+
+  selectPrev() {
+    if( this.questionLeft % this.selectedQuestions.length ) {
+
+      this.questionLeft += 1;
+      this.forDisplay -= 1;
+
+    }
+  }
+
+  updateAnsweredList() {
+
+    if ( !this.answeredList.includes(this.forDisplay) ) {
+      this.answeredList.push(this.forDisplay); 
+    }
+  }
+
 }
