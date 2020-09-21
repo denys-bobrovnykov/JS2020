@@ -46,8 +46,6 @@ export default class TestView{
     renderQuestion(n = forDisplay, selectedQuestions, checked) {
 
         this.clear();
-        let color;
-        let prop;
         this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
 
         for ( let key in selectedQuestions[n].a ) {
@@ -73,7 +71,7 @@ export default class TestView{
           el.checked = false;
         }
         if ( !checked.includes(el.id) && correct.includes(el.id) && correct.length > 1 ) {
-          el.classList.add('wrong-color');
+          el.parentElement.classList.add('wrong-color');
           el.checked = true;
         }
         if ( correct.includes(el.id) && !checked.includes(el.id) ) {
