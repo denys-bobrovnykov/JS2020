@@ -55,7 +55,7 @@ export default class IndexControl{
             .then(data => {
                 this.storeDBdata(data,'questions');
                 console.log('db loaded')
-                this.loadAnswers();
+                this.loadAnswers();// then load answers
             }, rej => document.body.innerHTML = "ERROR LOADING QUESTIONS DB")
             .catch(err => console.error(err));
         }
@@ -69,8 +69,8 @@ export default class IndexControl{
             .then(data => {
                     this.storeDBdata(data, 'answers');
                     console.log('db loaded')
-                    this.loadChapters();
-                    this.initIndex();
+                    this.loadChapters(); // then load chapters
+                    this.initIndex(); // and fire init function
             }, rej => document.body.innerHTML = "ERROR LOADING ANSWERS DB")
             .catch(err => console.error(err));
         }
@@ -103,6 +103,4 @@ export default class IndexControl{
 
     
 }
-// -------- Functions ----------- //
-
 

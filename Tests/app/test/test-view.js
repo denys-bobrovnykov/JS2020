@@ -24,7 +24,6 @@ export default class TestView{
       this.prevButton.addEventListener('click', prevQ);
       this.submitForm.addEventListener('submit', submitAnsw);
       this.submitForm.addEventListener('click', checkBox);
-      window.onunload = saveSession;//presumably saves session on unload
       
       // window.addEventListener('scroll', this.stickControls.bind(this)); // Stick controls(switched off)
     }
