@@ -72,7 +72,6 @@ export default class TestControl {
 
     onNextClick() {
         this.model.selectNext();
-
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
         this.applyHistory();
         this.saveSession();
@@ -80,7 +79,6 @@ export default class TestControl {
 
     onPrevClick() {
         this.model.selectPrev();
-
         this.view.renderQuestion(this.model.forDisplay, this.model.selectedQuestions);
         this.applyHistory();
         this.saveSession();
@@ -88,32 +86,15 @@ export default class TestControl {
 
 
     saveStats() {
-
-        const maxNumStored = 5;// max stored results
-        let sessionsResults = JSON.parse(localStorage.getItem('session_results')) || [];
-        const dateNow = new Date();
-
-        const sessionStats = {
-            chapters: this.chapters,
-            answeredList: this.model.answeredList,
-            wrongAnswersList: this.model.wrongAnswersList,
-            correctAnswList: this.model.correctAnswList,
-            start: localStorage.getItem('time_start'),
-            finish: dateNow.toLocaleString(),
-        }
-
-        sessionsResults.unshift(sessionStats);//put question in the beginning
-
-        if (sessionsResults.length > maxNumStored) sessionsResults.pop();// pop last stored
-        localStorage.setItem('session_results', JSON.stringify(sessionsResults));
+        const sessionsResults = JSON.parse(localStorage.getItem('session_results')) || [];
+        const timeStart = localStorage.getItem('time_start');
+        const sessionResultReturn = this.model.saveStats(sessionsResults, timeStart);
+        localStorage.setItem('session_results', JSON.stringify(sessionResultReturn));
         localStorage.removeItem('time_start');
-
     }
 
     saveSession() {
-
         localStorage.setItem('session_data', JSON.stringify(this.model));
-
     }
 
     submitAnswer(e) {
@@ -124,7 +105,7 @@ export default class TestControl {
             const options = this.view.selectAnswers();
             this.model.check(options, this.answers);
             this.model.updateAnsweredList();
-            
+
             // ------ Optional auto move to next if correct ----------- //
             // if (this.model.correct) { // jumps to next if correct
             //     this.onNextClick();

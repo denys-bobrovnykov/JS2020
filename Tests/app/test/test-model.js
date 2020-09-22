@@ -6,7 +6,7 @@ export default class TestModel{
     this.checkedAnsw; //ticked answers array
     this.correctAnsw; //number of question in database for answer check
     this.correctAnswList = []; // correct answers array
-    this.correct; //bool overall answer correctness for controller
+    this.correct; //bool overall answer correctness for controller autoshow next Q
     this.forCheck; //question number to check with ANSWERS db
     this.forDisplay = 0; //question index in SELECTed questions array to display
     this.questionLeft = 0; // total questions in the SELECT
@@ -50,10 +50,31 @@ export default class TestModel{
 
   }
 
+  saveStats(sessionsResults = [], sessionstart){
+
+    const maxNumStored = 5;// max stored results
+    const dateNow = new Date();
+
+    const sessionStats = {
+      chapters: this.chapters,
+      answeredList: this.answeredList,
+      wrongAnswersList: this.wrongAnswersList,
+      correctAnswList: this.correctAnswList,
+      start: sessionstart,
+      finish: dateNow.toLocaleString(),
+    }
+
+    sessionsResults.unshift(sessionStats);//put question in the beginning
+    if (sessionsResults.length > maxNumStored) sessionsResults.pop();// pop last stored
+
+    return sessionsResults;
+
+  }
+
   selectChapters(questions, chapters, chaptersRanges) {
 
-    for ( let j of chapters) {
-      for ( let k = chaptersRanges[j][0]; k <= chaptersRanges[j][1]; k++ ) {
+    for ( let j of chapters) { // iterate through chapters selected
+      for ( let k = chaptersRanges[j][0]; k <= chaptersRanges[j][1]; k++ ) { // iterate from start qNum to last qNum in range
         const obj = {num: k, text: questions[k].text, a: questions[k].a};
         this.selectedQuestions.push(obj);
       }
