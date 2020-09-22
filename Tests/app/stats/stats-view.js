@@ -5,7 +5,6 @@ export default class StatsView{
         //Buttons
         this.gotoMain = document.querySelector('.nav-home');
         //Listeners
-        this.gotoMain.addEventListener('click', gotoMain);
     }
     renderList(data){
 

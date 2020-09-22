@@ -69,7 +69,6 @@ export default class TestControl {
         localStorage.removeItem('session_data');
         localStorage.setItem('location', 'main');
         this.saveStats();
-        window.location.href = './index.html';
     }
 
 

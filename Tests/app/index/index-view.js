@@ -1,5 +1,5 @@
 export default class IndexView{
-    constructor(gotoStats, selectChapter, goClick, checkBox){
+    constructor(selectChapter, goClick, checkBox){
         //Chapters select section
         this.chaptersList = document.querySelector('ol');
         this.modeSelect = document.querySelector('#mode-select');
@@ -10,7 +10,7 @@ export default class IndexView{
         this.randomButton = document.querySelector('.randomize-button');
         //Listeners
         this.chaptersList.addEventListener('click', checkBox);
-        this.goToStatsButton.addEventListener('click', gotoStats);
+        // this.goButton.addEventListener('click', goClick);
         this.modeSelect.addEventListener('submit', goClick);
         this.selectElement.forEach(chapter => chapter.addEventListener('change', selectChapter));
     }
