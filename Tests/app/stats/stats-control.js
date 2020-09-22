@@ -10,10 +10,6 @@ export default class StatsControl{
         
     }
 
-    // gotoMain(){
-    //     window.location.href = './index.html';
-    // }
-
     showList(){
         this.view.renderList(this.model.data);
     }

@@ -24,7 +24,6 @@ export default class IndexControl{
     goClick(e) {
         e.preventDefault();
         this.storeData();
-        this.cleanUpStorage();
         window.location.href = './test.html';
     }
 
@@ -40,8 +39,4 @@ export default class IndexControl{
         localStorage.setItem('time_start', timeStart.toLocaleString());
     }
     
-    cleanUpStorage() {
-        localStorage.removeItem('wrongAnswers');
-        localStorage.removeItem('correctAnswers');
-    }
 }
