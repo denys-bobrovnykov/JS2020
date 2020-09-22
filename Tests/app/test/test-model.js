@@ -10,7 +10,7 @@ export default class TestModel{
     this.forCheck; //question number to check with ANSWERS db
     this.forDisplay = 0; //question index in SELECTed questions array to display
     this.questionLeft = 0; // total questions in the SELECT
-    this.selectedQuestions = []; // SELECTed questions array
+    this.selectedQuestions = []; // SELECTed questions from chosen chapters array
     this.wrongAnswersList = []; // wrong answers array
     // Select questions for display
     this.selectChapters(questions, chapters, chaptersRanges); // select questions in this SELECT

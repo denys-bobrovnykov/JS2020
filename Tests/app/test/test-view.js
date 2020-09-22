@@ -26,45 +26,45 @@ export default class TestView{
       this.submitForm.addEventListener('click', checkBox);
       window.onunload = saveSession;//presumably saves session on unload
       
-      // window.addEventListener('scroll', this.stickControls.bind(this)); // Stick controls
+      // window.addEventListener('scroll', this.stickControls.bind(this)); // Stick controls(switched off)
     }
 
     clear() {
-        this.questionText.innerHTML = '';
-        this.submitForm.innerHTML = '';
+      this.questionText.innerHTML = '';
+      this.submitForm.innerHTML = '';
     }
 
     renderProgress(answeredList, questionLeft, wrongAnswers){
 
-        this.progressView.innerHTML = `Всього питань: ${questionLeft} , Переглянуто питань: ${answeredList}, Помилок: ${wrongAnswers}`;
-            //       Всього питань: questionLeft
-            // Переглянуто питань: answeredList
-            // Помилок: wrongAnswers
+      this.progressView.innerHTML = `Всього питань: ${questionLeft}, Переглянуто питань: ${answeredList}, Помилок: ${wrongAnswers}`;
       
     }
 
     renderQuestion(n = forDisplay, selectedQuestions, checked) {
 
-        this.clear();
-        this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
+      this.clear();
+      this.questionText.innerHTML = '<p>' + selectedQuestions[n].text + '</p>';
 
-        for ( let key in selectedQuestions[n].a ) {
-          this.submitForm.innerHTML += ` <div class="answer-container">
-                                            <span class="answer-container_clickable"><input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />${selectedQuestions[n].a[key]}</span>
-                                        </div>`;
-        }
+      for ( let key in selectedQuestions[n].a ) {
+        this.submitForm.innerHTML += ` <div class="answer-container">
+                                          <span class="answer-container_clickable">
+                                          <input type="checkbox" value="${key}" id="${key}" name="answer" class="options" />
+                                          ${selectedQuestions[n].a[key]}
+                                          </span>
+                                      </div>`;
+      }
 
-        this.submitForm.append(this.submitButton);// Insert Submit button
+      this.submitForm.append(this.submitButton);// Insert Submit button
         
     }
 
     renderResult(options, checked, correct){
 
-      options.forEach(el => {
+      options.forEach(el => {// add check property 
         if ( checked.includes(el.id) ) el.checked = true;
       })
 
-      options.forEach(el => {
+      options.forEach(el => {// render color-coding, uncheck wrong, check hints
 
         if ( checked.includes(el.id) && !correct.includes(el.id) ) {
           el.parentElement.classList.add('wrong-color');
