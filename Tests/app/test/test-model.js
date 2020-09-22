@@ -1,5 +1,3 @@
-import TestView from "./test-view.js";
-
 export default class TestModel{
 
   constructor(questions, answers, chaptersRanges, chapters){
@@ -14,8 +12,6 @@ export default class TestModel{
     this.questionLeft = 0; // total questions in the SELECT
     this.selectedQuestions = []; // SELECTed questions array
     this.wrongAnswersList = []; // wrong answers array
-    // Init TestView
-    this.view = new TestView();
     // Select questions for display
     this.selectChapters(questions, chapters, chaptersRanges); // select questions in this SELECT
   }
