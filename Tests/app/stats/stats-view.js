@@ -18,7 +18,7 @@ export default class StatsView{
             const result = (item.correctAnswList.length/item.answeredList.length * 100).toFixed(0);
             let count = 0;
             for(let key of item.chapters){// calculate total questions in selected chapters
-                count += chaptersRanges[key][1] - chaptersRanges[key][0];
+                count += chaptersRanges[key][1] - chaptersRanges[key][0] + 1;
             }
             this.container.innerHTML += `<table class="result">
                                             <tr>
