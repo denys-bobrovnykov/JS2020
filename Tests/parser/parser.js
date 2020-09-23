@@ -29,9 +29,3 @@ function questObj(data) {
     }
     fs.writeFile('QuestionsObj.json', JSON.stringify(questions),(err,ok) => console.log('Ok'));
 }
-
-
- 
-
-
-
