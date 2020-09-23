@@ -48,32 +48,28 @@ export default class IndexControl{
     }
     
     loadFromDB() {
-        if ( !localStorage.getItem('questions') ) {
-            console.group('Loading questions db');
-            fetch('./app/index/questions/QuestionsObj.json')
-            .then(res => res.json())
-            .then(data => {
-                this.storeDBdata(data,'questions');
-                console.log('db loaded')
-                this.loadAnswers();// then load answers
-            }, rej => document.body.innerHTML = "ERROR LOADING QUESTIONS DB")
-            .catch(err => console.error(err));
-        }
+        console.group('Loading questions db');
+        fetch('./app/index/questions/QuestionsObj.json')
+        .then(res => res.json())
+        .then(data => {
+            this.storeDBdata(data,'questions');
+            console.log('db loaded')
+            this.loadAnswers();// then load answers
+        }, rej => document.body.innerHTML = "ERROR LOADING QUESTIONS DB")
+        .catch(err => console.error(err));
     }
 
     loadAnswers(){
-        if ( !localStorage.getItem('answers') ) {
-            console.group('Loading answers db');
-            fetch('./app/index/answers/answersObj.json')
-            .then(res => res.json())
-            .then(data => {
-                    this.storeDBdata(data, 'answers');
-                    console.log('db loaded')
-                    this.loadChapters(); // then load chapters
-                    this.initIndex(); // and fire init function
-            }, rej => document.body.innerHTML = "ERROR LOADING ANSWERS DB")
-            .catch(err => console.error(err));
-        }
+        console.group('Loading answers db');
+        fetch('./app/index/answers/answersObj.json')
+        .then(res => res.json())
+        .then(data => {
+                this.storeDBdata(data, 'answers');
+                console.log('db loaded')
+                this.loadChapters(); // then load chapters
+                this.initIndex(); // and fire init function
+        }, rej => document.body.innerHTML = "ERROR LOADING ANSWERS DB")
+        .catch(err => console.error(err));
     } 
     
     loadChapters(){
